@@ -2,7 +2,7 @@ import React from 'react';
 
 import './main.css';
 
-class SideBar extends React.Component {
+class WideColumn extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -12,11 +12,11 @@ class SideBar extends React.Component {
 
   render () {
     return (
-      <aside className="sidebar">
-        
-      </aside>
+      <div className="wide-column">
+
+      </div>
     );
   }
 }
 
-export default SideBar;
+export default WideColumn;

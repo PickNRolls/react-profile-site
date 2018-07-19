@@ -1,5 +1,7 @@
 .sidebar {
   width: 160px;
+  height: 100px;
+  background: #4a76a8;
   float: left;
   position: relative;
 }

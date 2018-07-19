@@ -1,6 +1,7 @@
 import React from 'react';
-import LeftColumn from '../left-column';
 import SideBar from '../sidebar';
+import LeftColumn from '../left-column';
+import WideColumn from '../wide-column';
 
 import './main.css';
 
@@ -18,6 +19,7 @@ class MainContent extends React.Component {
         <div className="container clearfix">
           <SideBar />
           <LeftColumn />
+          <WideColumn />
         </div>
       </main>
     );

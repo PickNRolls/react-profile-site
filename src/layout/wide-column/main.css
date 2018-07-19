@@ -1,5 +1,5 @@
-.left-column {
-  width: 230px;
+.wide-column {
+  width: calc(100% - 390px);
   height: 100px;
   background: #4a76a8;
   float: left;
