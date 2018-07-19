@@ -1,5 +1,5 @@
 import React from 'react';
-import SiteHeader from './components/site-header';
+import SiteHeader from './layout/site-header';
 
 import './App.css';
 

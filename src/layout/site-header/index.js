@@ -1,5 +1,5 @@
 import React from 'react';
-import Clock from '../clock';
+import Clock from '../../components/clock';
 
 import './main.css';
 

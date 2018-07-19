@@ -28,7 +28,9 @@ class Clock extends React.Component {
     this.setState({
       date: new Date(),
       day: dateDictionary[3],
-      hhmm: `${date.getHours()}:${date.getMinutes()}`
+      hhmm: `${date.getHours()}:${date.getMinutes() < 10 ?
+        '0' + date.getMinutes() :
+        date.getMinutes()}`
     });
   }
 
