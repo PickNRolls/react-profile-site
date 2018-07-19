@@ -1,0 +1,8 @@
+.left-column {
+  width: 230px;
+  height: 100px;
+  float: left;
+  background: #4a76a8;
+  position: relative;
+  left: 160px;
+}
