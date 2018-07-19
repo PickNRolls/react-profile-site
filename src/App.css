@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu Mono', 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #fff;
+  background: #edeef0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

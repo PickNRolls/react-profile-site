@@ -1,0 +1,10 @@
+.clock {
+  width: 132px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.clock__hhmm {
+  font-size: 17px;
+}

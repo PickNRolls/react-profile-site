@@ -1,0 +1,10 @@
+.site-header {
+  height: 42px;
+  background: #4a76a8;
+  border-bottom: 1px solid #4872a3;
+}
+
+.site-header__clock {
+  height: 100%;
+  padding-top: 11px;
+}

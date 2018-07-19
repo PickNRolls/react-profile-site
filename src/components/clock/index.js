@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './main.css';
+
 var dateDictionary = [
   'Sunday',
   'Monday',
@@ -25,7 +27,7 @@ class Clock extends React.Component {
 
     this.setState({
       date: new Date(),
-      day: dateDictionary[date.getDay()],
+      day: dateDictionary[3],
       hhmm: `${date.getHours()}:${date.getMinutes()}`
     });
   }
@@ -42,7 +44,7 @@ class Clock extends React.Component {
 
   render () {
     return (
-      <div className="clock">
+      <div className={`clock ${this.props.className}`}>
         <span className="clock__day">{this.state.day}</span>,
         <span className="clock__hhmm"> {this.state.hhmm}</span>
       </div>
