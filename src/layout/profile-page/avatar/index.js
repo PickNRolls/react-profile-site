@@ -13,7 +13,11 @@ class PageAvatar extends React.Component {
   render () {
     return (
       <div className="page-avatar page-block">
-        <img className="page-avatar__pic" src={this.props.src} alt="page avatar" />
+        <img
+          className="page-avatar__pic"
+          src={this.props.src}
+          alt="page avatar"
+        />
       </div>
     );
   }

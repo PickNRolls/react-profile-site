@@ -27,9 +27,15 @@ class PageFriendList extends React.Component {
         <ul className="page-friend-list clearfix">
           <li className="page-friend-list__item">
             <a href="#" className="page-friend-list__avatar">
-              <img src={this.state.listOfFriendsObjects[0].avatar} alt={this.state.listOfFriendsObjects[0].name} className="page-friend-list__pic"/>
+              <img
+                src={this.state.listOfFriendsObjects[0].avatar}
+                alt={this.state.listOfFriendsObjects[0].name}
+                className="page-friend-list__pic"
+              />
             </a>
-            <a href="#" className="page-friend-list__link">{this.state.listOfFriendsObjects[0].name}</a>
+            <a href="#" className="page-friend-list__link">
+              {this.state.listOfFriendsObjects[0].name}
+            </a>
           </li>
         </ul>
       </div>
