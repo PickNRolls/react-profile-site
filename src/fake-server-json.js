@@ -6,6 +6,6 @@ var profileInfo = {
   }
 };
 
-export {
+export default {
   profileInfo
 };
