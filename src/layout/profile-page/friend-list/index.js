@@ -1,4 +1,5 @@
 import React from 'react';
+import fakeData from '../../../fake-server-json';
 
 import './main.css';
 
@@ -6,7 +7,9 @@ class PageFriendList extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-
+      listOfFriendsObjects: props.friends.map(function (userID) {
+        return fakeData.databaseExample.getInfo(userID);
+      })
     };
   }
 
@@ -24,9 +27,9 @@ class PageFriendList extends React.Component {
         <ul className="page-friend-list clearfix">
           <li className="page-friend-list__item">
             <a href="#" className="page-friend-list__avatar">
-              <img src="https://sun1-7.userapi.com/c834403/v834403654/185219/NJ2jhvJQ3Y8.jpg?ava=1" alt="" className="page-friend-list__pic"/>
+              <img src={this.state.listOfFriendsObjects[0].avatar} alt={this.state.listOfFriendsObjects[0].name} className="page-friend-list__pic"/>
             </a>
-            <a href="#" className="page-friend-list__link">Сергей</a>
+            <a href="#" className="page-friend-list__link">{this.state.listOfFriendsObjects[0].name}</a>
           </li>
         </ul>
       </div>
