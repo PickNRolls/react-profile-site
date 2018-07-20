@@ -1,4 +1,6 @@
 import React from 'react';
+import PageInfo from '../profile-page/info';
+import fakeData from '../../fake-server-json';
 
 import './main.css';
 
@@ -13,7 +15,7 @@ class WideColumn extends React.Component {
   render () {
     return (
       <div className="wide-column">
-
+        <PageInfo name={fakeData.profileInfo.page.name}/>
       </div>
     );
   }

@@ -1,0 +1,15 @@
+.page-info {
+  padding: 15px 20px;
+}
+
+.page-info__profile-name {
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 400;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  margin: -1px 0 -1px -1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 1px;
+}

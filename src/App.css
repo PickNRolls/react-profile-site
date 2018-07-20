@@ -5,10 +5,17 @@
 }
 
 body {
-  font-family: 'Ubuntu Mono', 'Roboto', sans-serif;
-  font-size: 13px;
-  color: #fff;
   background: #edeef0;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  direction: ltr;
+  font-size: 13px;
+  font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  line-height: 1.154;
+  font-weight: 400;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
 }
 
 .container {
@@ -22,4 +29,11 @@ body {
   width: 100%;
   height: 0;
   clear: both;
+}
+
+.page-block {
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  border-radius: 2px;
 }
