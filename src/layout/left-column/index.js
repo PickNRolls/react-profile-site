@@ -1,5 +1,6 @@
 import React from 'react';
 import PageAvatar from '../../components/profile-page/avatar';
+import PageFriendList from '../profile-page/friend-list';
 import fakeData from '../../fake-server-json';
 
 import './main.css';
@@ -16,6 +17,7 @@ class LeftColumn extends React.Component {
     return (
       <div className="left-column">
         <PageAvatar src={fakeData.profileInfo.page.avatar} />
+        <PageFriendList friends={[{}]} />
       </div>
     );
   }
