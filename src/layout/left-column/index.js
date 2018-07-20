@@ -1,5 +1,5 @@
 import React from 'react';
-import PageAvatar from '../../components/profile-page/avatar';
+import PageAvatar from '../profile-page/avatar';
 import PageFriendList from '../profile-page/friend-list';
 import fakeData from '../../fake-server-json';
 
