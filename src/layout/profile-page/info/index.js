@@ -16,13 +16,12 @@ class PageInfo extends React.Component {
     return (
       <div className="page-info page-block">
         <div className="page-info__main">
+          <div className="page-info__online-status">
+            <span>Online</span>
+          </div>
           <h1 className="page-info__profile-name">
             {name.first} {name.second}
           </h1>
-          {/* TODO
-            <span className="page-info__online-status">Online</span>
-              TODO
-          */}
         </div>
         <div className="page-info__profile-info">
           
