@@ -2,6 +2,11 @@
   padding: 15px 20px;
 }
 
+.page-info__main {
+  border-bottom: 1px solid #e7e8ec;
+  padding-bottom: 15px;
+}
+
 .page-info__profile-name {
   font-size: 19px;
   line-height: 25px;
