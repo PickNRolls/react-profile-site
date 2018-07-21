@@ -25,7 +25,18 @@ class PageInfo extends React.Component {
             </h1>
           </div>
           <div className="page-info__profile-info">
-            
+            <div className="page-info__info-row">
+              <div className="page-info__label">
+                День рождения:
+              </div>
+              <div className="page-info__labeled">
+                19 марта
+              </div>
+            </div>
+            <div className="page-info__info-row">
+              <div className="page-info__label">Семейное положение:</div>
+              <div className="page-info__labeled">влюблён в Администратора</div>
+            </div>
           </div>
         </div>
       </div>

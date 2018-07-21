@@ -2,6 +2,10 @@
   padding: 15px 20px;
 }
 
+.page-info .page-block--inner {
+  padding: 15px 20px;
+}
+
 .page-info__main {
   border-bottom: 1px solid #e7e8ec;
   padding-bottom: 15px;
@@ -39,4 +43,24 @@
 
 .page-info__online-status span {
   display: block;
+}
+
+.page-info__profile-info {
+  padding-top: 10px;
+}
+
+.page-info__info-row {
+  padding-top: 5px;
+  line-height: 150%;
+}
+
+.page-info__label {
+  width: 165px;
+  color: #828282;
+  float: left;
+}
+
+.page-info__labeled {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
