@@ -1,5 +1,5 @@
 import React from 'react';
-import fakeData from '../../../fake-server-json';
+import serverData from '../../../fake-server';
 
 import './main.css';
 
@@ -8,7 +8,7 @@ class PageFriendList extends React.Component {
     super(props);
     this.state = {
       listOfFriendsObjects: props.friends.map(function (userID) {
-        return fakeData.databaseExample.getInfo(userID);
+        return serverData.database.getInfo(userID);
       })
     };
   }
