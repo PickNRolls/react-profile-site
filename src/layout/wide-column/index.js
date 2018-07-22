@@ -5,17 +5,12 @@ import serverData from '../../fake-server';
 import './main.css';
 
 class WideColumn extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
   render () {
+    var name = serverData.database.getInfo(this.props.match.params.id).page.name;
+
     return (
       <div className="wide-column">
-        <PageInfo name={serverData.profiles.me.page.name}/>
+        <PageInfo name={name}/>
       </div>
     );
   }

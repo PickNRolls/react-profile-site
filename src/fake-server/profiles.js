@@ -1,7 +1,10 @@
+var usersCount = 0;
+
 class ProfileTemplate {
   constructor (cfg) {
     this.page = cfg.page;
     this.friends = cfg.friends;
+    this.id = usersCount++;
   }
 
   get name () {
@@ -28,7 +31,7 @@ var listOfAccounts = [
       currentInfo: 'Sometimes the same is different...'
     },
     friends: {
-      list: [0] // database.users.id
+      list: [1] // database.users.id
     }
   }),
   new ProfileTemplate({
@@ -41,7 +44,7 @@ var listOfAccounts = [
       currentInfo: 'Python is the best!'
     },
     friends: {
-      list: [0]
+      list: [2]
     }
   }),
   new ProfileTemplate({
@@ -54,7 +57,7 @@ var listOfAccounts = [
       currentInfo: 'Basketball is my life'
     },
     friends: {
-      list: [0]
+      list: [3]
     }
   }),
   new ProfileTemplate({
@@ -67,7 +70,7 @@ var listOfAccounts = [
       currentInfo: 'Фриланс говно, а брать деньги у мамы - нет!'
     },
     friends: {
-      list: [0]
+      list: [4]
     }
   }),
   new ProfileTemplate({
@@ -80,7 +83,7 @@ var listOfAccounts = [
       currentInfo: 'Calmik'
     },
     friends: {
-      list: [0]
+      list: [5]
     }
   }),
   new ProfileTemplate({
@@ -93,7 +96,7 @@ var listOfAccounts = [
       currentInfo: 'Hi zyables, i\'m from ingland!'
     },
     friends: {
-      list: [0]
+      list: [0, 6]
     }
   })
 ];
@@ -108,7 +111,7 @@ var me = new ProfileTemplate({
     currentInfo: 'Sometimes the same is different...'
   },
   friends: {
-    list: [1, 2, 3, 4, 5, 6] // database.users.id
+    list: [0, 1, 2, 3, 4, 5] // database.users.id
   }
 });
 

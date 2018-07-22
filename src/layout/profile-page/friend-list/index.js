@@ -19,7 +19,9 @@ class PageFriendList extends React.Component {
   }
 
   getSixRandomFriends () {
-    var friends = this.state.listOfFriendsObjects.slice(0);
+    var friends = this.props.friends.map(function (userID) {
+      return serverData.database.getInfo(userID);
+    });
     var data = [];
     var friendsLen = friends.length < 6 ? friends.length : 6;
 
@@ -29,12 +31,12 @@ class PageFriendList extends React.Component {
       friends.splice(randomNum, 1);
     }
 
-    return data.map(function (friend) {
-      return <Item user={friend} key={friend.page.name.first} />
-    });
+    return data.map((friend) => <Item user={friend} key={friend.id} /> );
   }
 
   render () {
+    var friends = this.getSixRandomFriends();
+
     return (
       <div className="page-friend-block page-block page-block--wrap">
         <a href="#" className="page-friend-block-header page-block-header">
@@ -46,9 +48,7 @@ class PageFriendList extends React.Component {
           </span>
         </a>
         <ul className="page-friend-list clearfix">
-          {
-            this.getSixRandomFriends()
-          }
+          {friends}
         </ul>
       </div>
     );

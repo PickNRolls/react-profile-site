@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 import SideBar from '../sidebar';
 import LeftColumn from '../left-column';
 import WideColumn from '../wide-column';
@@ -18,8 +22,8 @@ class MainContent extends React.Component {
       <main className="main-content">
         <div className="container clearfix">
           <SideBar />
-          <LeftColumn />
-          <WideColumn />
+          <Route path="/id:id" component={LeftColumn} />
+          <Route path="/id:id" component={WideColumn} />
         </div>
       </main>
     );

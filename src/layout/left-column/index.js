@@ -14,10 +14,14 @@ class LeftColumn extends React.Component {
   }
 
   render () {
+    var user = serverData.database.getInfo(this.props.match.params.id);
+    var avatarSrc = user.page.avatar;
+    var friendList = user.friends.list;
+
     return (
       <div className="left-column">
-        <PageAvatar src={serverData.profiles.me.page.avatar} />
-        <PageFriendList friends={serverData.profiles.me.friends.list} />
+        <PageAvatar src={avatarSrc} />
+        <PageFriendList friends={friendList} />
       </div>
     );
   }
