@@ -17,7 +17,7 @@ class LeftColumn extends React.Component {
     return (
       <div className="left-column">
         <PageAvatar src={serverData.profiles.me.page.avatar} />
-        <PageFriendList friends={[1]} />
+        <PageFriendList friends={serverData.profiles.me.friends.list} />
       </div>
     );
   }

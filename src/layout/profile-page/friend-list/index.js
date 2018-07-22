@@ -1,7 +1,12 @@
 import React from 'react';
 import serverData from '../../../fake-server';
+import Item from './item';
 
 import './main.css';
+
+var getRandomBetween = function (min, max) {
+  return Math.floor(Math.random() * max) + min;
+};
 
 class PageFriendList extends React.Component {
   constructor (props) {
@@ -11,6 +16,22 @@ class PageFriendList extends React.Component {
         return serverData.database.getInfo(userID);
       })
     };
+  }
+
+  getSixRandomFriends () {
+    var friends = this.state.listOfFriendsObjects.slice(0);
+    var data = [];
+    var friendsLen = friends.length < 6 ? friends.length : 6;
+
+    for (var i = 0; i < friendsLen; i++) {
+      let randomNum = getRandomBetween(0, friends.length);
+      data.push(friends[randomNum]);
+      friends.splice(randomNum, 1);
+    }
+
+    return data.map(function (friend) {
+      return <Item user={friend} key={friend.page.name.first} />
+    });
   }
 
   render () {
@@ -25,18 +46,9 @@ class PageFriendList extends React.Component {
           </span>
         </a>
         <ul className="page-friend-list clearfix">
-          <li className="page-friend-list__item">
-            <a href="#" className="page-friend-list__avatar">
-              <img
-                src={this.state.listOfFriendsObjects[0].avatar}
-                alt={this.state.listOfFriendsObjects[0].name}
-                className="page-friend-list__pic"
-              />
-            </a>
-            <a href="#" className="page-friend-list__link">
-              {this.state.listOfFriendsObjects[0].name}
-            </a>
-          </li>
+          {
+            this.getSixRandomFriends()
+          }
         </ul>
       </div>
     );

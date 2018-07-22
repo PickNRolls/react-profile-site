@@ -108,7 +108,7 @@ var me = new ProfileTemplate({
     currentInfo: 'Sometimes the same is different...'
   },
   friends: {
-    list: [1] // database.users.id
+    list: [1, 2, 3, 4, 5, 6] // database.users.id
   }
 });
 
