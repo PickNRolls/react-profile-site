@@ -4,7 +4,7 @@ class ProfileTemplate {
   constructor (cfg) {
     this.page = cfg.page;
     this.friends = cfg.friends;
-    this.id = usersCount++;
+    this.id = cfg._id ? cfg._id : usersCount++;
   }
 
   get name () {
@@ -96,7 +96,7 @@ var listOfAccounts = [
       currentInfo: 'Hi zyables, i\'m from ingland!'
     },
     friends: {
-      list: [0, 6]
+      list: [0, '_admin']
     }
   })
 ];
@@ -112,7 +112,8 @@ var me = new ProfileTemplate({
   },
   friends: {
     list: [0, 1, 2, 3, 4, 5] // database.users.id
-  }
+  },
+  _id: '_admin'
 });
 
 export default {

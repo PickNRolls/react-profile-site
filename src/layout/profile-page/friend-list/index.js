@@ -9,15 +9,6 @@ var getRandomBetween = function (min, max) {
 };
 
 class PageFriendList extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      listOfFriendsObjects: props.friends.map(function (userID) {
-        return serverData.database.getInfo(userID);
-      })
-    };
-  }
-
   getSixRandomFriends () {
     var friends = this.props.friends.map(function (userID) {
       return serverData.database.getInfo(userID);

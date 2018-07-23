@@ -4,17 +4,15 @@ var me = profiles.me;
 
 var databaseExample = {
   users: {
-    0: listOfAccounts[0],
-    1: listOfAccounts[1],
-    2: listOfAccounts[2],
-    3: listOfAccounts[3],
-    4: listOfAccounts[4],
-    5: listOfAccounts[5],
-    6: me
+    _admin: me
   },
   getInfo(userID) {
     return this.users[userID];
   }
 };
+
+listOfAccounts.forEach(function (account) {
+  databaseExample.users[account.id] = account;
+});
 
 export default databaseExample;
