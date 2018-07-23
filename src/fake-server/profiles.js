@@ -2,9 +2,9 @@ var usersCount = 0;
 
 class ProfileTemplate {
   constructor (cfg) {
+    this.id = cfg._id ? cfg._id : usersCount++;
     this.page = cfg.page;
     this.friends = cfg.friends;
-    this.id = cfg._id ? cfg._id : usersCount++;
   }
 
   get name () {
@@ -28,7 +28,11 @@ var listOfAccounts = [
         first: 'Серега',
         second: 'Симонов'
       },
-      currentInfo: 'Sometimes the same is different...'
+      currentInfo: 'Sometimes the same is different...',
+      birth: {
+        day: 1,
+        month: 2
+      }
     },
     friends: {
       list: [1] // database.users.id
@@ -41,7 +45,11 @@ var listOfAccounts = [
         first: 'Анатолий',
         second: 'Овчаренко'
       },
-      currentInfo: 'Python is the best!'
+      currentInfo: 'Python is the best!',
+      birth: {
+        day: 1,
+        month: 2
+      }
     },
     friends: {
       list: [2]
@@ -54,7 +62,11 @@ var listOfAccounts = [
         first: 'Александр',
         second: 'Проводников'
       },
-      currentInfo: 'Basketball is my life'
+      currentInfo: 'Basketball is my life',
+      birth: {
+        day: 1,
+        month: 2
+      }
     },
     friends: {
       list: [3]
@@ -67,7 +79,11 @@ var listOfAccounts = [
         first: 'Даниил',
         second: 'Чагин'
       },
-      currentInfo: 'Фриланс говно, а брать деньги у мамы - нет!'
+      currentInfo: 'Фриланс говно, а брать деньги у мамы - нет!',
+      birth: {
+        day: 1,
+        month: 2
+      }
     },
     friends: {
       list: [4]
@@ -80,7 +96,11 @@ var listOfAccounts = [
         first: 'Витя',
         second: 'Манджиев'
       },
-      currentInfo: 'Calmik'
+      currentInfo: 'Calmik',
+      birth: {
+        day: 1,
+        month: 2
+      }
     },
     friends: {
       list: [5]
@@ -93,7 +113,11 @@ var listOfAccounts = [
         first: 'Марина',
         second: 'Граф'
       },
-      currentInfo: 'Hi zyables, i\'m from ingland!'
+      currentInfo: 'Hi zyables, i\'m from ingland!',
+      birth: {
+        day: 1,
+        month: 1
+      }
     },
     friends: {
       list: [0, '_admin']
@@ -108,7 +132,11 @@ var me = new ProfileTemplate({
       first: 'Илья',
       second: 'Блинков'
     },
-    currentInfo: 'Sometimes the same is different...'
+    currentInfo: 'Sometimes the same is different...',
+      birth: {
+        day: 19,
+        month: 2
+      }
   },
   friends: {
     list: [0, 1, 2, 3, 4, 5] // database.users.id
