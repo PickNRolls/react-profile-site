@@ -11,7 +11,9 @@ class PageInfo extends React.Component {
   }
 
   render () {
-    var name = this.props.name
+    var user = this.props.user;
+    var name = user.page.name;
+    var birth = user.page.birth;
 
     return (
       <div className="page-info page-block page-block--wrap">
@@ -30,7 +32,7 @@ class PageInfo extends React.Component {
                 День рождения:
               </div>
               <div className="page-info__labeled">
-                19 марта
+                {birth.day} {birth.month}
               </div>
             </div>
             <div className="page-info__info-row">

@@ -6,11 +6,11 @@ import './main.css';
 
 class WideColumn extends React.Component {
   render () {
-    var name = serverData.database.getInfo(this.props.match.params.id).page.name;
+    var user = serverData.database.getInfo(this.props.match.params.id);
 
     return (
       <div className="wide-column">
-        <PageInfo name={name}/>
+        <PageInfo user={user} />
       </div>
     );
   }

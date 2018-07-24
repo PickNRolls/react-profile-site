@@ -133,10 +133,10 @@ var me = new ProfileTemplate({
       second: 'Блинков'
     },
     currentInfo: 'Sometimes the same is different...',
-      birth: {
-        day: 19,
-        month: 2
-      }
+    birth: {
+      day: 19,
+      month: 2
+    }
   },
   friends: {
     list: [0, 1, 2, 3, 4, 5] // database.users.id
