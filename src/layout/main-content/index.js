@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Redirect,
   Route
 } from 'react-router-dom';
 import SideBar from '../sidebar';
@@ -10,18 +11,14 @@ import WideColumn from '../wide-column';
 import './main.css';
 
 class MainContent extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
   render () {
     return (
       <main className="main-content">
         <div className="container clearfix">
           <SideBar />
+          <Route exact path="/" render={() => (
+            <Redirect to="/id_admin" />
+          )} />
           <Route path="/id:id" component={LeftColumn} />
           <Route path="/id:id" component={WideColumn} />
         </div>
