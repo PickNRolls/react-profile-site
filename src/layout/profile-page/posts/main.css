@@ -1,0 +1,11 @@
+.page-no-post {
+  height: 200px;
+  padding: 37px 20px 49px !important;
+  text-align: center;
+  color: #656565;
+}
+
+.page-no-post__pic {
+  display: block;
+  margin: 0 auto 24px;
+}
