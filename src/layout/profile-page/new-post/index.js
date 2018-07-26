@@ -90,7 +90,7 @@ class PageNewPost extends React.Component {
           />
         </div>
         <div className="page-new-post__submit">
-          <button onClick={this.sendPost} className="page-new-post__button">Отправить</button>
+          <button onClick={this.sendPost} className="page-button page-new-post__button">Отправить</button>
         </div>
        </div> 
     );
