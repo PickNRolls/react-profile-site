@@ -33,6 +33,10 @@
   border-radius: 2px;
 }
 
+.page-new-post__field.placeholder {
+  color: #828282;
+}
+
 .page-new-post__submit {
   height: 60px;
   background: #fafbfc;
