@@ -20,6 +20,8 @@ class ProfileTemplate {
   }
 }
 
+// Handmade users
+
 var listOfAccounts = [
   new ProfileTemplate({
     page: {

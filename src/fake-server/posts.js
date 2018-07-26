@@ -9,6 +9,8 @@ class Post {
   }
 }
 
+// Action only through the PostsCollection class
+
 class PostsCollection {
   constructor (userID) {
     this.userID = userID;
@@ -28,6 +30,7 @@ var collections = {
 
 
 // Creating walls for users
+
 listOfAccounts.forEach(function (account) {
   var id = account.id;
   collections[id] = new PostsCollection(id);

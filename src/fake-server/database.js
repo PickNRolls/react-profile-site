@@ -16,6 +16,8 @@ var databaseExample = {
   }
 };
 
+// Fill database by handmade users
+
 listOfAccounts.forEach(function (account) {
   databaseExample.users[account.id] = account;
 });
