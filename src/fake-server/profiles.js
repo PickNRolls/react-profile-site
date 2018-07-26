@@ -28,7 +28,7 @@ var listOfAccounts = [
         first: 'Серега',
         second: 'Симонов'
       },
-      currentInfo: 'Sometimes the same is different...',
+      currentInfo: 'Zyables?',
       birth: {
         day: 1,
         month: 2
@@ -132,7 +132,7 @@ var me = new ProfileTemplate({
       first: 'Илья',
       second: 'Блинков'
     },
-    currentInfo: 'Sometimes the same is different...',
+    currentInfo: 'Web-developer, not web-monkey...',
     birth: {
       day: 19,
       month: 2

@@ -14,6 +14,7 @@ class PageInfo extends React.Component {
     var user = this.props.user;
     var name = user.page.name;
     var birth = user.page.birth;
+    var status = user.page.currentInfo;
 
     return (
       <div className="page-info page-block page-block--wrap">
@@ -25,6 +26,7 @@ class PageInfo extends React.Component {
             <h1 className="page-info__profile-name">
               {name.first} {name.second}
             </h1>
+            <div className="page-info__status">{status}</div>
           </div>
           <div className="page-info__profile-info">
             <div className="page-info__info-row">

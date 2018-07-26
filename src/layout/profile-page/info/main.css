@@ -41,6 +41,13 @@
   text-align: center;
 }
 
+.page-info__status {
+  padding: 3px 0 1px;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .page-info__online-status span {
   display: block;
 }
