@@ -22,9 +22,9 @@
 
 .page-new-post__field {
   width: 100%;
-  min-height: 72px;
+  min-height: 42px;
   font-family: 'Roboto', sans-serif;
-  padding: 15px 36px 16px 12px;
+  padding: 15px 36px 0 12px;
   border: none;
   outline: none;
   overflow: hidden;
