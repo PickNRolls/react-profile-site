@@ -1,5 +1,6 @@
 import React from 'react';
 import PageInfo from '../profile-page/info';
+import PageNewPost from '../profile-page/new-post';
 import serverData from '../../fake-server';
 
 import './main.css';
@@ -11,6 +12,7 @@ class WideColumn extends React.Component {
     return (
       <div className="wide-column">
         <PageInfo user={user} />
+        <PageNewPost user={user} />
       </div>
     );
   }

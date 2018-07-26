@@ -1,0 +1,65 @@
+.page-new-post__field-wrap {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  border-bottom: 1px solid #e7e8ec;
+}
+
+.page-new-post__avatar-wrap {
+  display: block;
+  width: 43px;
+  height: 100%;
+  padding: 10px 0 0 15px;
+}
+
+.page-new-post__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.page-new-post__field {
+  width: 100%;
+  min-height: 72px;
+  font-family: 'Roboto', sans-serif;
+  padding: 15px 36px 16px 12px;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: text;
+  resize: none;
+  border-radius: 2px;
+}
+
+.page-new-post__submit {
+  height: 60px;
+  background: #fafbfc;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding-right: 20px;
+  padding-top: 15px;
+}
+
+.page-new-post__button {
+  display: block;
+  font-size: 12.5px;
+  zoom: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  vertical-align: top;
+  line-height: 15px;
+  text-align: center;
+  text-decoration: none;
+  background: none;
+  background-color: #5181b8;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 7px 16px 8px;
+  margin: 0;
+  float: right;
+}
