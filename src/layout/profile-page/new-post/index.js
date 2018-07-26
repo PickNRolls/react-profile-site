@@ -2,11 +2,9 @@ import React from 'react';
 import {
   Link
 } from 'react-router-dom';
-import serverData from '../../../fake-server';
 
 import './main.css';
 
-var database = serverData.database;
 var placeholderString = 'Что нового?';
 
 class PageNewPost extends React.Component {
@@ -56,7 +54,6 @@ class PageNewPost extends React.Component {
   }
 
   sendPost () {
-    var wall = database.getWall(this.props.user.id);
     var content = {
       text: this.state.text
     };

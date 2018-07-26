@@ -1,5 +1,8 @@
 import React from 'react';
 import serverData from '../../../fake-server';
+import {
+  Link
+} from 'react-router-dom';
 import Item from './item';
 
 import './main.css';
@@ -30,14 +33,14 @@ class PageFriendList extends React.Component {
 
     return (
       <div className="page-friend-block page-block page-block--wrap">
-        <a href="#" className="page-friend-block-header page-block-header">
-          <span href="#" className="page-block-header__label">
+        <Link to="/friends" className="page-friend-block-header page-block-header">
+          <span className="page-block-header__label">
             Друзья
           </span>
           <span className="page-block-header__count">
             {this.props.friends.length}
           </span>
-        </a>
+        </Link>
         <ul className="page-friend-list clearfix">
           {friends}
         </ul>

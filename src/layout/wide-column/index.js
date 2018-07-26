@@ -11,18 +11,15 @@ var database = serverData.database;
 class WideColumn extends React.Component {
   constructor (props) {
     super(props);
-    var user = database.getInfo(this.props.match.params.id);
-
     this.state = {
-      user: user,
-      wall: database.getWall(user.id)
+      user: database.getInfo(props.match.params.id)
     };
-
+    this.state.wall = database.getWall(this.state.user.id);
     this.addPost = this.addPost.bind(this);
   }
 
   addPost (content) {
-    var wall = this.state.wall;
+    var wall = this.wall;
     wall.addPost(content);
     this.setState({
       wall: wall
@@ -30,11 +27,14 @@ class WideColumn extends React.Component {
   }
 
   render () {
+    this.user = database.getInfo(this.props.match.params.id);
+    this.wall = database.getWall(this.user.id);
+
     return (
       <div className="wide-column">
-        <PageInfo user={this.state.user} />
-        <PageNewPost user={this.state.user} onAddPost={this.addPost} />
-        <PagePosts wall={this.state.wall} />
+        <PageInfo user={this.user} />
+        <PageNewPost user={this.user} onAddPost={this.addPost} />
+        <PagePosts wall={this.wall} />
       </div>
     );
   }

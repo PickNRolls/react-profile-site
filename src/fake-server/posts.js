@@ -26,11 +26,11 @@ var collections = {
   _admin: new PostsCollection('_admin')
 };
 
+
+// Creating walls for users
 listOfAccounts.forEach(function (account) {
   var id = account.id;
   collections[id] = new PostsCollection(id);
 });
-
-collections[1].addPost();
 
 export default collections;
