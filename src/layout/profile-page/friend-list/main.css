@@ -1,5 +1,6 @@
 .page-friend-list {
   padding: 6px 10px 8px;
+  list-style: none;
 }
 
 .page-friend-list__item {
