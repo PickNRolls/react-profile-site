@@ -2,9 +2,10 @@ import profiles from './profiles';
 var listOfAccounts = profiles.listOfAccounts;
 
 class Post {
-  constructor (collectionID, postID, content) {
+  constructor (collectionID, postID, postDate, content) {
     this.collection = collectionID;
     this.id = postID;
+    this.postDate = postDate;
     this.content = content;
   }
 }
@@ -19,7 +20,7 @@ class PostsCollection {
   }
 
   addPost (content) {
-    var post = new Post(this.userID, this.postsCount++, content);
+    var post = new Post(this.userID, this.postsCount++, new Date(), content);
     this.posts.push(post);
   }
 }

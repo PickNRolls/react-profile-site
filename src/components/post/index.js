@@ -74,7 +74,10 @@ class Post extends React.Component {
               {user.fullName}
             </Link>
             <div className="page-post-info__date">
-              сегодня в 10:03
+              {
+                post.postDate.toLocaleString() 
+                // Todo normal string
+              }
             </div>
           </div>
         </header>
