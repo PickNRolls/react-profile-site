@@ -2,10 +2,12 @@ import React from 'react';
 import {
   Link
 } from 'react-router-dom';
+import serverData from '../../../fake-server';
 
 import './main.css';
 
 var placeholderString = 'Что нового?';
+var me = serverData.database.getInfo('_admin');
 
 class PageNewPost extends React.Component {
   constructor (props) {
@@ -18,10 +20,11 @@ class PageNewPost extends React.Component {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.sendPost = this.sendPost.bind(this);
   }
 
-  makeHandle (showPlaceholder) {
+  makePlaceholderHandle (showPlaceholder) {
     return function () {
       if (!this.state.text || this.state.text === placeholderString) {
         this.setState({
@@ -31,14 +34,20 @@ class PageNewPost extends React.Component {
     };
   }
 
-  handleFocus = this.makeHandle(false);
+  handleFocus = this.makePlaceholderHandle(false);
 
-  handleBlur = this.makeHandle(true);
+  handleBlur = this.makePlaceholderHandle(true);
 
   handleChange (e) {
     this.setState({
       text: e.target.value
     });
+  }
+
+  handleKeyPress (e) {
+    if (e.key === 'Enter' && e.ctrlKey) {
+      this.sendPost();
+    }
   }
 
   showPlaceholder () {
@@ -74,10 +83,10 @@ class PageNewPost extends React.Component {
     return (
       <div className="page-new-post page-block page-block--wrap">
         <div className="page-new-post__field-wrap">
-          <Link to={`/id${this.props.user.id}`} className="page-new-post__avatar-wrap">
+          <Link to={`/id${me.id}`} className="page-new-post__avatar-wrap">
             <img
-              src={this.props.user.page.avatar}
-              alt={this.props.user.page.name.first}
+              src={me.page.avatar}
+              alt={me.page.name.first}
               className="page-new-post__avatar"
             />
           </Link>
@@ -85,6 +94,7 @@ class PageNewPost extends React.Component {
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
             className={'page-new-post__field' + (this.state.isPlaceholderVisible ? ' placeholder' : '')}
             value={this.state.text}
           />

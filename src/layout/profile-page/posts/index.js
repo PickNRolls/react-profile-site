@@ -6,8 +6,7 @@ import serverData from '../../../fake-server';
 
 import './main.css';
 
-var database = serverData.database;
-var me = database.getInfo('_admin');
+var me = serverData.database.getInfo('_admin');
 
 class PagePosts extends React.Component {
   getPosts () {
