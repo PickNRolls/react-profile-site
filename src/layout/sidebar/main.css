@@ -9,23 +9,3 @@
   height: 100%;
   list-style: none;
 }
-
-.sidebar-menu__item {
-  height: 28px;
-}
-
-.sidebar-menu__link {
-  display: block;
-  white-space: nowrap;
-  font-size: 12.5px;
-  line-height: 27px;
-  padding-left: 10px;
-  -ms-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-}
-
-.sidebar-menu__link:hover {
-  background: #e1e5eb;
-  text-decoration: none;
-  border-radius: 2px;
-}

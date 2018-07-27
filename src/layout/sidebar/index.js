@@ -7,8 +7,8 @@ import './main.css';
 class SideBar extends React.Component {
   renderMenu () {
     var sidebarData = serverData.sidebar;
-    var items = sidebarData.map((route) => {
-      return <Item route={route} key={route.name}/>
+    var items = sidebarData.map((item) => {
+      return <Item item={item} key={item.name}/>
     });
 
     return <ul className="sidebar-menu">{items}</ul>;

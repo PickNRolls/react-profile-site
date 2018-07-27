@@ -2,27 +2,3 @@
   padding: 6px 10px 8px;
   list-style: none;
 }
-
-.page-friend-list__item {
-  float: left;
-  width: 70px;
-  overflow: hidden;
-  padding: 6px 0 5px;
-  text-align: center;
-}
-
-.page-friend-list__avatar {
-  display: block;
-  height: 50px;
-  width: 50px;
-  margin: 0 10px;
-  padding-bottom: 7px;
-  margin-bottom: 6px;
-}
-
-.page-friend-list__pic {
-  overflow: hidden;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
