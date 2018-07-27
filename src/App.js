@@ -1,10 +1,18 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
+
+// Main routers
+
+import ProfileRouter from './routers/profile';
+import FriendsRouter from './routers/friends';
+
+// Layout components
+
 import SiteHeader from './layout/site-header';
-import MainContent from './layout/main-content';
 
 import './App.css';
 
@@ -14,8 +22,16 @@ class App extends React.Component {
       <div className="app">
         <Router>
           <React.Fragment>
-            <Route path="/" component={SiteHeader} />
-            <Route path="/" component={MainContent} />
+            <SiteHeader />
+            <Route exact path="/" render={() => (
+              <Redirect to="/id_admin" />
+            )} />
+
+            <Route path="/id:id" render={(props) => (
+              <ProfileRouter {...props} />
+            )} />
+
+            <Route path="/friends" component={FriendsRouter} />
           </React.Fragment>
         </Router>
       </div>
