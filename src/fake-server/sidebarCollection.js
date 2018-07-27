@@ -11,8 +11,8 @@ class MenuItem {
 
 var sidebarData = [
   new MenuItem('Моя страница', '/', 7, 6),
-  new MenuItem('Мои сообщения', '/msg', 7, -21),
-  new MenuItem('Мои друзья', '/friends', 7, -77)
+  new MenuItem('Сообщения', '/msg', 7, -21),
+  new MenuItem('Друзья', '/friends', 7, -77)
 ];
 
 export default sidebarData;
