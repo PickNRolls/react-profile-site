@@ -2,7 +2,7 @@ import React from 'react';
 
 import './main.css';
 
-class PageAvatar extends React.Component {
+class Avatar extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -23,4 +23,4 @@ class PageAvatar extends React.Component {
   }
 }
 
-export default PageAvatar;
+export default Avatar;

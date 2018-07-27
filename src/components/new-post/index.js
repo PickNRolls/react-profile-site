@@ -2,14 +2,14 @@ import React from 'react';
 import {
   Link
 } from 'react-router-dom';
-import serverData from '../../../fake-server';
+import serverData from '../../fake-server';
 
 import './main.css';
 
 var placeholderString = 'Что нового?';
 var me = serverData.database.getInfo('_admin');
 
-class PageNewPost extends React.Component {
+class NewPost extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -107,4 +107,4 @@ class PageNewPost extends React.Component {
   }
 }
 
-export default PageNewPost;
+export default NewPost;

@@ -1,6 +1,6 @@
 import React from 'react';
-import PageAvatar from '../profile-page/avatar';
-import PageFriendList from '../profile-page/friend-list';
+import Avatar from '../../components/profile/avatar';
+import FriendList from '../../components/profile/friend-list';
 import serverData from '../../fake-server';
 
 import './main.css';
@@ -20,8 +20,8 @@ class LeftColumn extends React.Component {
 
     return (
       <div className="left-column">
-        <PageAvatar src={avatarSrc} />
-        <PageFriendList friends={friendList} />
+        <Avatar src={avatarSrc} />
+        <FriendList friends={friendList} />
       </div>
     );
   }

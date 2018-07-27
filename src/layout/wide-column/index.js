@@ -1,7 +1,7 @@
 import React from 'react';
-import PageInfo from '../profile-page/info';
-import PageNewPost from '../profile-page/new-post';
-import PagePosts from '../profile-page/posts';
+import Info from '../../components/profile/info';
+import NewPost from '../../components/new-post';
+import Wall from '../../components/wall';
 import serverData from '../../fake-server';
 
 import './main.css';
@@ -32,9 +32,9 @@ class WideColumn extends React.Component {
 
     return (
       <div className="wide-column">
-        <PageInfo user={this.user} />
-        <PageNewPost user={this.user} onAddPost={this.addPost} />
-        <PagePosts wall={this.wall} />
+        <Info user={this.user} />
+        <NewPost user={this.user} onAddPost={this.addPost} />
+        <Wall wall={this.wall} />
       </div>
     );
   }

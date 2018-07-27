@@ -2,7 +2,7 @@ import React from 'react';
 
 import './main.css';
 
-class PageInfo extends React.Component {
+class Info extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -48,4 +48,4 @@ class PageInfo extends React.Component {
   }
 }
 
-export default PageInfo;
+export default Info;

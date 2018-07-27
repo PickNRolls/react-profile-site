@@ -5,7 +5,7 @@ import {
 
 import './main.css';
 
-class PagePost extends React.Component {
+class Post extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -95,4 +95,4 @@ class PagePost extends React.Component {
   }
 }
 
-export default PagePost;
+export default Post;

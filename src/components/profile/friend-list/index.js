@@ -11,7 +11,7 @@ var getRandomBetween = function (min, max) {
   return Math.floor(Math.random() * max) + min;
 };
 
-class PageFriendList extends React.Component {
+class FriendList extends React.Component {
   getSixRandomFriends () {
     var friends = this.props.friends.map(function (userID) {
       return serverData.database.getInfo(userID);
@@ -49,4 +49,4 @@ class PageFriendList extends React.Component {
   }
 }
 
-export default PageFriendList;
+export default FriendList;
