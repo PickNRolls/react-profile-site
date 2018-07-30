@@ -21,7 +21,7 @@ class Left extends React.Component {
     var friends = user.friends.list;
 
     return (
-      <ThinColumn>
+      <ThinColumn order="0">
         <Avatar src={avatarSrc} />
         <FriendList friends={friends} />
       </ThinColumn>
