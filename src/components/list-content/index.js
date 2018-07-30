@@ -1,9 +1,7 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import UITabs from '../ui-tabs';
 
 import './main.css';
-
-var F = Fragment;
 
 class ListContent extends React.Component {
   constructor (props) {
@@ -14,17 +12,17 @@ class ListContent extends React.Component {
   }
 
   render () {
-    var tabsElements = {
-      items: [
-        <F>Все друзья 6</F>,
-        <F>Друзья онлайн 3</F>
-      ],
-      button: <F>Найти друзей</F>
-    };
+    var tabsElements = this.props.tabsContent;
 
     return (
       <div className="list-content page-block page-block--wrap">
         <UITabs elements={tabsElements} />
+
+        {
+          // Only this local items children
+        }
+
+        {this.props.children}
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import serverData from '../../fake-server';
 
 // Layout components
 
@@ -10,10 +11,12 @@ import './main.css';
 
 class FriendsRouter extends React.Component {
   render () {
+    var friendsID = serverData.database.getInfo('_admin').friends.list;
+
     return (
       <React.Fragment>
         <MainContent>
-          <Wide />
+          <Wide friendsID={friendsID} />
           <Thin />
         </MainContent>
       </React.Fragment>

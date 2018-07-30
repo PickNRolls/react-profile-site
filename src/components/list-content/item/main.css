@@ -1,0 +1,36 @@
+.list-content__item {
+  padding: 12px 20px 9px;
+  border-bottom: 1px solid #e7e8ec;
+}
+
+.list-content__item:last-child {
+  border-bottom: none;
+}
+
+.list-content__photo-link {
+  display: block;
+}
+
+.list-content__photo-wrap {
+  margin-right: 20px;
+  float: left;
+}
+
+.list-content__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.list-content__info {
+  padding-top: 10px;
+  float: left;
+}
+
+.list-content__info-link {
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  color: #42648b;
+}
