@@ -4,7 +4,12 @@ import React from 'react';
 
 import ThinColumn from '../../layout/thin-column';
 
+// Components
+
+import Menu from '../../components/ui-menu';
+
 import './main.css';
+
 
 class Thin extends React.Component {
   constructor (props) {
@@ -15,9 +20,14 @@ class Thin extends React.Component {
   }
 
   render () {
+    var menuContent = [
+      ['Мои друзья', '/'],
+      ['Заявки в друзья', '/']
+    ];
+
     return (
       <ThinColumn order="1">
-        Hi
+        <Menu links={menuContent} />
       </ThinColumn>
     );
   }
