@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+var mongoose = require('../index.js');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  _id: Number,
+  _id: String,
   name: {
     first: String,
     last: String

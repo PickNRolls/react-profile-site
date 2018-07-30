@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 var config = require('./config');
 
-mongoose.connect(config.mongo.uri);
+mongoose.connect(config.mongo.uri, config.mongo.options);
 var db = mongoose.connection;
-db.once('open', function() {
-  console.log('We\'re connected!');
-});
+
+module.exports = mongoose;

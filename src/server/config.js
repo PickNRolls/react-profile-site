@@ -1,6 +1,9 @@
 module.exports = {
   mongo: {
-    dbName: 'react_vk',
-    uri: 'mongodb://127.0.0.1:27017'
+    uri: 'mongodb://127.0.0.1:27017',
+    options: {
+      useNewUrlParser: true,
+      dbName: 'react_vk'
+    }
   }
 };
