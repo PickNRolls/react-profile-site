@@ -22,7 +22,9 @@ class Thin extends React.Component {
   render () {
     var menuContent = [
       ['Мои друзья', '/'],
-      ['Заявки в друзья', '/']
+      ['Заявки в друзья', '/'],
+      ['Новые друзья', '/'],
+      ['Поиск друзей', '/']
     ];
 
     return (

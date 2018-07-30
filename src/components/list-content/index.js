@@ -23,7 +23,7 @@ class ListContent extends React.Component {
     };
 
     return (
-      <div className="list-content">
+      <div className="list-content page-block page-block--wrap">
         <UITabs elements={tabsElements} />
       </div>
     );
