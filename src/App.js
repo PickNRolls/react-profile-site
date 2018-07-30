@@ -9,6 +9,7 @@ import {
 
 import ProfileRouter from './routers/profile';
 import FriendsRouter from './routers/friends';
+import MessagesRouter from './routers/messages';
 
 // Layout components
 
@@ -32,6 +33,8 @@ class App extends React.Component {
             )} />
 
             <Route path="/friends" component={FriendsRouter} />
+
+            <Route path="/msg" component={MessagesRouter} />
           </React.Fragment>
         </Router>
       </div>

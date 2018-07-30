@@ -2,14 +2,14 @@ import React from 'react';
 
 import './main.css';
 
-class LeftColumn extends React.Component {
+class ThinColumn extends React.Component {
   render () {
     return (
-      <div className="left-column">
+      <div className="thin-column">
         {this.props.children}
       </div>
     );
   }
 };
 
-export default LeftColumn;
+export default ThinColumn;

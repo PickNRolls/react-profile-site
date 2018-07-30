@@ -3,7 +3,7 @@ import serverData from '../../fake-server';
 
 // Layout components
 
-import LeftColumn from '../../layout/left-column';
+import ThinColumn from '../../layout/thin-column';
 
 // Components
 
@@ -21,10 +21,10 @@ class Left extends React.Component {
     var friends = user.friends.list;
 
     return (
-      <LeftColumn>
+      <ThinColumn>
         <Avatar src={avatarSrc} />
         <FriendList friends={friends} />
-      </LeftColumn>
+      </ThinColumn>
     );
   }
 }
