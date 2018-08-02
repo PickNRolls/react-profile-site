@@ -14,16 +14,21 @@ class ProfileRouter extends React.Component {
     super(props);
     this.state = {
       user: null,
-      friends: null
+      friends: null,
+      wall: null
     };
     this.user = null;
+    this.wall = null;
     this.userID = null;
+
+    this.getUser = this.getUser.bind(this);
+    this.getWall = this.getWall.bind(this);
   }
 
   getUser () {
     var userID = this.props.match.params.id;
 
-    fetch(`${config.serverUrl}/users/${userID}`)
+    return fetch(`${config.serverUrl}/users/${userID}`)
     .then((res) => {
       return res.json();
     })
@@ -42,7 +47,7 @@ class ProfileRouter extends React.Component {
         return res.json();
       });
 
-      Promise.all(arr)
+      return Promise.all(arr)
       .then((friends) => {
         this.friends = friends;
         var user = this.user;
@@ -52,19 +57,35 @@ class ProfileRouter extends React.Component {
         });
       });
     });
+  }
 
-    return this.user;
+  getWall () {
+    return fetch(`${config.serverUrl}/walls/${this.userID}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((wall) => {
+      this.wall = wall;
+      this.setState({
+        wall: wall
+      });
+    });
   }
 
   render () {
     var user = this.state.user;
+    var wall = this.state.wall;
     var friends = this.state.friends;
 
     if (this.props.match.params.id !== this.userID) {
-      user = this.getUser();
+      this.getUser()
+      .then(this.getWall)
+      .catch((err) => {
+        if (err) throw err;
+      });
     }
 
-    if (!user || !friends) {
+    if (!user || !friends || !wall) {
       return (
         <React.Fragment>
           <MainContent>
@@ -78,7 +99,7 @@ class ProfileRouter extends React.Component {
       <React.Fragment>
         <MainContent>
           <Thin user={user} friends={friends} />
-          <Wide user={user} />
+          <Wide user={user} wall={wall} />
         </MainContent>
       </React.Fragment>
     );

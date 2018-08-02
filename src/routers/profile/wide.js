@@ -61,9 +61,7 @@ class Wide extends React.Component {
           authorized={this.state.authorized}
           onAddPost={this.addPost}
         />
-        {
-          //<Wall wall={this.wall} />
-        }
+        <Wall wall={this.wall} />
       </WideColumn>
     );
   }

@@ -1,19 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var config = require('./config');
 
-var db;
 var app = express();
 var router = express.Router();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-mongoose.connect(config.mongo.uri, config.mongo.options);
-db = mongoose.connection;
 
 var User = require('./models/user');
+var Wall = require('./models/wall');
+
+var mongoose = require('./mongoose');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -37,11 +35,18 @@ router.get('/users/:id', function (req, res) {
   })
 });
 
+router.get('/walls/:id', function (req, res) {
+  var wallID = req.params.id;
+
+  Wall.findOne({_id: wallID}, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
 app.use(router);
 
 
 app.listen(8080, function () {
   console.log('Express is at 8080');
 });
-
-module.exports = mongoose;
