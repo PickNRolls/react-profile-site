@@ -3,6 +3,8 @@ import {
   Link
 } from 'react-router-dom';
 
+import store from '../../store';
+
 import './main.css';
 
 var placeholderString = 'Что нового?';
@@ -75,10 +77,16 @@ class NewPost extends React.Component {
 
   componentDidMount() {
     this.showPlaceholder();
+    store.then((data) => {
+      this.setState({
+        authorized: data[0]
+      });
+    });
   }
 
   render () {
-    var user = this.props.authorized;
+    var user = this.state.authorized;
+    if (!user) return null;
 
     return (
       <div className="page-new-post page-block page-block--wrap">

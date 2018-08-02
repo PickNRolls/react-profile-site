@@ -44,6 +44,15 @@ router.get('/walls/:id', function (req, res) {
   });
 });
 
+router.post('/walls/:id', function (req, res) {
+  var wallID = req.params.id;
+
+  Wall.findOne({_id: wallID}, function (err, wall) {
+    if (err) throw err;
+    wall.addPost(req.body);
+  });
+});
+
 app.use(router);
 
 

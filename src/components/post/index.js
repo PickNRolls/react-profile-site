@@ -61,7 +61,7 @@ class Post extends React.Component {
     return (
       <div className="page-post page-block page-block--wrap">
         <header className="page-post-header clearfix">
-          <Link to={`/id${user.id}`} className="page-post-header__author">
+          <Link to={`/id${user._id}`} className="page-post-header__author">
             <img
               src={user.page.avatar}
               alt={user.fullName}

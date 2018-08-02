@@ -13,6 +13,7 @@ import Wall from '../../components/wall';
 // Store
 
 import store from '../../store';
+import config from '../../config';
 
 import './main.css';
 
@@ -27,11 +28,25 @@ class Wide extends React.Component {
   }
 
   addPost (content) {
-    var wall = this.wall;
-    wall.addPost(content);
+    fetch(`${config.serverUrl}/walls/${this.user._id}`, {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(content)
+    });
   }
 
   getAuthorizedUser () {
+    store.then((data) => {
+      this.setState({
+        authorized: data[0]
+      });
+    });
+  }
+
+  componentDidMount () {
     store.then((data) => {
       this.setState({
         authorized: data[0]
@@ -43,15 +58,10 @@ class Wide extends React.Component {
     this.user = this.props.user;
     this.wall = this.props.wall;
 
-    if (!this.user) {
+    if (!this.user || !this.state.authorized) {
       return (
         <WideColumn>Waiting for user fetching...</WideColumn>
       );
-    }
-
-    if (!this.state.authorized) {
-      this.getAuthorizedUser();
-      return null;
     }
 
     return (
@@ -61,7 +71,7 @@ class Wide extends React.Component {
           authorized={this.state.authorized}
           onAddPost={this.addPost}
         />
-        <Wall wall={this.wall} />
+        <Wall wall={this.wall} user={this.user} />
       </WideColumn>
     );
   }

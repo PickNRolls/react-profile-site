@@ -33,6 +33,7 @@ wallSchema.methods.addPost = function (content) {
   });
 
   this.posts.push(post);
+  return this.save();
 };
 
 var Wall = mongoose.model('Wall', wallSchema);
