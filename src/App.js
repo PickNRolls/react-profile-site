@@ -24,9 +24,6 @@ class App extends React.Component {
         <Router>
           <React.Fragment>
             <SiteHeader />
-            <Route exact path="/" render={() => (
-              <Redirect to="/id_admin" />
-            )} />
 
             <Route path="/id:id" render={(props) => (
               <ProfileRouter {...props} />

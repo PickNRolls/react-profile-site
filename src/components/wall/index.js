@@ -10,6 +10,7 @@ var me = serverData.database.getInfo('_admin');
 class Wall extends React.Component {
   getPosts () {
     this.wall = this.props.wall;
+
     if (!this.wall.posts.length) {
       return <NoPost />
     }

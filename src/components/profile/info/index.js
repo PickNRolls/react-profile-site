@@ -3,17 +3,10 @@ import React from 'react';
 import './main.css';
 
 class Info extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
   render () {
     var user = this.props.user;
-    var name = user.page.name;
-    var birth = user.page.birth;
+    var name = user.name;
+    var birth = user.birth;
     var status = user.page.currentInfo;
 
     return (
@@ -34,7 +27,7 @@ class Info extends React.Component {
                 День рождения:
               </div>
               <div className="page-info__labeled">
-                {birth.day} {birth.month}
+                1 19
               </div>
             </div>
             <div className="page-info__info-row">

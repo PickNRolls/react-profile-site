@@ -2,12 +2,10 @@ import React from 'react';
 import {
   Link
 } from 'react-router-dom';
-import serverData from '../../fake-server';
 
 import './main.css';
 
 var placeholderString = 'Что нового?';
-var me = serverData.database.getInfo('_admin');
 
 class NewPost extends React.Component {
   constructor (props) {
@@ -80,13 +78,15 @@ class NewPost extends React.Component {
   }
 
   render () {
+    var user = this.props.user;
+
     return (
       <div className="page-new-post page-block page-block--wrap">
         <div className="page-new-post__field-wrap">
-          <Link to={`/id${me.id}`} className="page-new-post__avatar-wrap">
+          <Link to={`/id${user._id}`} className="page-new-post__avatar-wrap">
             <img
-              src={me.page.avatar}
-              alt={me.page.name.first}
+              src={user.page.avatar}
+              alt={user.name.first}
               className="page-new-post__avatar"
             />
           </Link>

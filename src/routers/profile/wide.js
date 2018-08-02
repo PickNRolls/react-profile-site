@@ -1,5 +1,4 @@
 import React from 'react';
-import serverData from '../../fake-server';
 
 // Layout components
 
@@ -13,8 +12,6 @@ import Wall from '../../components/wall';
 
 import './main.css';
 
-var database = serverData.database;
-
 class Wide extends React.Component {
   constructor (props) {
     super(props);
@@ -24,21 +21,25 @@ class Wide extends React.Component {
   addPost (content) {
     var wall = this.wall;
     wall.addPost(content);
-    this.setState({
-      wall: wall
-    });
   }
 
   render () {
-    var userID = this.props.user;
-    this.user = database.getInfo(userID);
-    this.wall = database.getWall(userID);
+    this.user = this.props.user;
+    this.wall = this.props.wall;
+
+    if (!this.user) {
+      return (
+        <WideColumn>Waiting for user fetching...</WideColumn>
+      );
+    }
 
     return (
       <WideColumn>
         <Info user={this.user} />
         <NewPost user={this.user} onAddPost={this.addPost} />
-        <Wall wall={this.wall} />
+        {
+          //<Wall wall={this.wall} />
+        }
       </WideColumn>
     );
   }

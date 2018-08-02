@@ -1,5 +1,4 @@
 import React from 'react';
-import serverData from '../../../fake-server';
 import {
   Link
 } from 'react-router-dom';
@@ -12,10 +11,7 @@ var getRandomBetween = function (min, max) {
 };
 
 class FriendList extends React.Component {
-  getSixRandomFriends () {
-    var friends = this.props.friends.map(function (userID) {
-      return serverData.database.getInfo(userID);
-    });
+  getSixRandomFriends (friends) {
     var data = [];
     var friendsLen = friends.length < 6 ? friends.length : 6;
 
@@ -25,11 +21,20 @@ class FriendList extends React.Component {
       friends.splice(randomNum, 1);
     }
 
-    return data.map((friend) => <Item user={friend} key={friend.id} /> );
+    return data.map((friend) => <Item user={friend} key={friend._id} /> );
   }
 
   render () {
-    var friends = this.getSixRandomFriends();
+    var friends = this.props.friends.slice(0);
+    var friendsElements = this.getSixRandomFriends(friends);
+
+    if (!friends) {
+      return (
+        <div className="page-friend-block page-block page-block--wrap">
+          You've no friends!
+        </div>
+      );
+    }
 
     return (
       <div className="page-friend-block page-block page-block--wrap">
@@ -38,11 +43,11 @@ class FriendList extends React.Component {
             Друзья
           </span>
           <span className="page-block-header__count">
-            {this.props.friends.length}
+            {friendsElements.length}
           </span>
         </Link>
         <ul className="page-friend-list clearfix">
-          {friends}
+          {friendsElements}
         </ul>
       </div>
     );
