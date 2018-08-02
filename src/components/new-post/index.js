@@ -78,7 +78,7 @@ class NewPost extends React.Component {
   }
 
   render () {
-    var user = this.props.user;
+    var user = this.props.authorized;
 
     return (
       <div className="page-new-post page-block page-block--wrap">
