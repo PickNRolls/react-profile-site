@@ -21,6 +21,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+router.get('/authorized', function (req, res) {
+  User.findOne({_id: '000000006'}, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
 router.get('/users/:id', function (req, res) {
   var userID = req.params.id;
 
