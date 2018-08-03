@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import serverData from '../../fake-server';
 
 // Layout components
 
@@ -13,7 +12,6 @@ import Item from '../../components/list-content/item';
 import './main.css';
 
 var F = Fragment;
-var database = serverData.database;
 
 class Wide extends React.Component {
   constructor (props) {
@@ -24,7 +22,7 @@ class Wide extends React.Component {
   }
 
   render () {
-    var friends = this.props.friendsID;
+    var friends = this.props.friends;
 
     var listContent = {
       tabs: {
@@ -37,9 +35,8 @@ class Wide extends React.Component {
       list: friends
     };
 
-    var items = listContent.list.map((friendID) => {
-      var friend = database.getInfo(friendID);
-      return <Item content={friend} key={friendID} />
+    var items = friends.map((friend) => {
+      return <Item content={friend} key={friend._id} />
     });
 
     return (

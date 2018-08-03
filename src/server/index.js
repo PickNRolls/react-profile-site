@@ -35,6 +35,26 @@ router.get('/users/:id', function (req, res) {
   })
 });
 
+router.get('/friends/:id', function (req, res) {
+  var userID = req.params.id;
+
+  User.findOne({_id: userID})
+  .then(function (user) {
+    var friendsID = user.friends;
+    var promises = friendsID.map(function (friendID) {
+      return User.findOne({_id: friendID})
+    });
+
+    return Promise.all(promises);
+  })
+  .then(function (friends) {
+    res.json(friends);
+  })
+  .catch(function (err) {
+    if (err) throw err;
+  })
+});
+
 router.get('/walls/:id', function (req, res) {
   var wallID = req.params.id;
 
