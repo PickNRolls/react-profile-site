@@ -39,16 +39,19 @@ class Wide extends React.Component {
       body: JSON.stringify(content)
     });
 
+    var _id = this.state.postId;
+
     var post = {
       content: content,
       postDate: Date.now(),
       userId: this.user._id,
-      _id: this.state.postId++
+      _id: _id++
     };
 
     this.wall.posts.push(post);
     this.setState({
-      wall: this.wall
+      wall: this.wall,
+      postId: _id
     });
   }
 

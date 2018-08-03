@@ -15,15 +15,40 @@ import MessagesRouter from './routers/messages';
 
 import SiteHeader from './layout/site-header';
 
+import store from './store';
+
 import './App.css';
 
 class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      authorized: null
+    };
+  }
+
+  componentDidMount () {
+    store.then((data) => {
+      this.setState({
+        authorized: data[0]
+      });
+    });
+  }
+
   render () {
+    if (!this.state.authorized) return null;
+    
+    var pageId = '/id' + this.state.authorized._id;
+
     return (
       <div className="app">
         <Router>
           <React.Fragment>
             <SiteHeader />
+
+            <Route exact path="/" render={() => (
+              <Redirect to={pageId} />
+            )} />
 
             <Route path="/id:id" render={(props) => (
               <ProfileRouter {...props} />

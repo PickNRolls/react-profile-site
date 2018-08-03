@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from '../post';
 import NoPost from '../no-post';
-import serverData from '../../fake-server';
 
 import './main.css';
 

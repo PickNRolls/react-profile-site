@@ -27,7 +27,7 @@ class Info extends React.Component {
                 День рождения:
               </div>
               <div className="page-info__labeled">
-                1 19
+                {birth}
               </div>
             </div>
             <div className="page-info__info-row">
