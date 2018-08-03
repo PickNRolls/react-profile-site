@@ -22,7 +22,9 @@ class Wide extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      authorized: null
+      authorized: null,
+      wall: null,
+      postId: this.props.wall.postsCount
     };
     this.addPost = this.addPost.bind(this);
   }
@@ -36,13 +38,17 @@ class Wide extends React.Component {
       },
       body: JSON.stringify(content)
     });
-  }
 
-  getAuthorizedUser () {
-    store.then((data) => {
-      this.setState({
-        authorized: data[0]
-      });
+    var post = {
+      content: content,
+      postDate: Date.now(),
+      userId: this.user._id,
+      _id: this.state.postId++
+    };
+
+    this.wall.posts.push(post);
+    this.setState({
+      wall: this.wall
     });
   }
 
@@ -58,6 +64,13 @@ class Wide extends React.Component {
     this.user = this.props.user;
     this.wall = this.props.wall;
 
+    var wall;
+    if (!this.state.wall || this.state.wall._id !== this.wall._id) {
+      wall = this.wall;
+    } else {
+      wall = this.state.wall;
+    }
+
     if (!this.user || !this.state.authorized) {
       return (
         <WideColumn>Waiting for user fetching...</WideColumn>
@@ -71,7 +84,7 @@ class Wide extends React.Component {
           authorized={this.state.authorized}
           onAddPost={this.addPost}
         />
-        <Wall wall={this.wall} user={this.user} />
+        <Wall wall={wall} user={this.state.authorized} />
       </WideColumn>
     );
   }
