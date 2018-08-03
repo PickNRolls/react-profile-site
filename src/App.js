@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -15,9 +15,19 @@ import MessagesRouter from './routers/messages';
 
 import SiteHeader from './layout/site-header';
 
+// Errors handlers
+
+import NoAuthorized from './error-handlers/no-authorized';
+
+// Data store
+
 import store from './store';
 
+// Style
+
 import './App.css';
+
+var F = Fragment;
 
 class App extends React.Component {
   constructor (props) {
@@ -36,30 +46,41 @@ class App extends React.Component {
   }
 
   render () {
-    if (!this.state.authorized) return null;
+    var AppEl = (props) => (
+      <div className="app">
+        <Router>
+          <F>
+            <SiteHeader />
+            {props.children}
+          </F>
+        </Router>
+      </div>
+    );
+
+    if (!this.state.authorized) {
+      return (
+        <AppEl>
+          <NoAuthorized />
+        </AppEl>
+      );
+    }
     
     var pageId = '/id' + this.state.authorized._id;
 
     return (
-      <div className="app">
-        <Router>
-          <React.Fragment>
-            <SiteHeader />
+      <AppEl>
+        <Route exact path="/" render={() => (
+          <Redirect to={pageId} />
+        )} />
 
-            <Route exact path="/" render={() => (
-              <Redirect to={pageId} />
-            )} />
+        <Route path="/id:id" render={(props) => (
+          <ProfileRouter {...props} />
+        )} />
 
-            <Route path="/id:id" render={(props) => (
-              <ProfileRouter {...props} />
-            )} />
+        <Route path="/friends" component={FriendsRouter} />
 
-            <Route path="/friends" component={FriendsRouter} />
-
-            <Route path="/msg" component={MessagesRouter} />
-          </React.Fragment>
-        </Router>
-      </div>
+        <Route path="/msg" component={MessagesRouter} />
+      </AppEl>
     );
   }
 }
