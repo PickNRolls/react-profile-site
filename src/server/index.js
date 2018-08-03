@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 });
 
 router.get('/authorized', function (req, res) {
-  User.findOne({_id: '000000006'}, function (err, result) {
+  User.findById('000000006', function (err, result) {
     if (err) throw err;
     res.json(result);
   });
@@ -29,7 +29,7 @@ router.get('/authorized', function (req, res) {
 router.get('/users/:id', function (req, res) {
   var userID = req.params.id;
 
-  User.findOne({_id: userID}, function (err, result) {
+  User.findById(userID, function (err, result) {
     if (err) throw err;
     res.json(result);
   })
@@ -38,11 +38,11 @@ router.get('/users/:id', function (req, res) {
 router.get('/friends/:id', function (req, res) {
   var userID = req.params.id;
 
-  User.findOne({_id: userID})
+  User.findById(userID)
   .then(function (user) {
     var friendsID = user.friends;
     var promises = friendsID.map(function (friendID) {
-      return User.findOne({_id: friendID})
+      return User.findById(friendID)
     });
 
     return Promise.all(promises);
@@ -58,7 +58,7 @@ router.get('/friends/:id', function (req, res) {
 router.get('/walls/:id', function (req, res) {
   var wallID = req.params.id;
 
-  Wall.findOne({_id: wallID}, function (err, result) {
+  Wall.findById(wallID, function (err, result) {
     if (err) throw err;
     res.json(result);
   });
@@ -67,7 +67,7 @@ router.get('/walls/:id', function (req, res) {
 router.post('/walls/:id', function (req, res) {
   var wallID = req.params.id;
 
-  Wall.findOne({_id: wallID}, function (err, wall) {
+  Wall.findById(wallID, function (err, wall) {
     if (err) throw err;
     wall.addPost(req.body);
   });
