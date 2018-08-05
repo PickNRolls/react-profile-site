@@ -2,7 +2,8 @@ import React, {Fragment} from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom';
 
 // Main routers
@@ -18,6 +19,7 @@ import SiteHeader from './layout/site-header';
 // Errors handlers
 
 import NoAuthorized from './error-handlers/no-authorized';
+import Error404 from './error-handlers/404';
 
 // Data store
 
@@ -69,17 +71,21 @@ class App extends React.Component {
 
     return (
       <AppEl>
-        <Route exact path="/" render={() => (
-          <Redirect to={pageId} />
-        )} />
+        <Switch>
+          <Route exact path="/" render={() => (
+            <Redirect to={pageId} />
+          )} />
 
-        <Route path="/id:id" render={(props) => (
-          <ProfileRouter {...props} />
-        )} />
+          <Route path="/id:id" render={(props) => (
+            <ProfileRouter {...props} />
+          )} />
 
-        <Route path="/friends" component={FriendsRouter} />
+          <Route exact path="/friends" component={FriendsRouter} />
 
-        <Route path="/msg" component={MessagesRouter} />
+          <Route exact path="/msg" component={MessagesRouter} />
+
+          <Route component={Error404} />
+        </Switch>
       </AppEl>
     );
   }
