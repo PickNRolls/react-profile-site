@@ -30,8 +30,8 @@ class Wide extends React.Component {
   }
 
   addPost (content) {
-    fetch(`${config.serverUrl}/walls/${this.user._id}`, {
-      method: 'post',
+    fetch(`${config.serverUrl}/users/${this.user._id}/wall`, {
+      method: 'put',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'

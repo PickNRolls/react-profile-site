@@ -14,6 +14,10 @@ import Error404 from '../../error-handlers/404';
 
 import config from '../../config';
 
+// Store
+
+import store from '../../store';
+
 // Style
 
 import './main.css';
@@ -22,6 +26,7 @@ class ProfileRouter extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      authorized: null,
       user: null,
       friends: null,
       wall: null
@@ -32,6 +37,15 @@ class ProfileRouter extends React.Component {
 
     this.getUser = this.getUser.bind(this);
     this.getWall = this.getWall.bind(this);
+    this.handleFriendAdd = this.handleFriendAdd.bind(this);
+  }
+
+  componentDidMount () {
+    store.then((data) => {
+      this.setState({
+        authorized: data[0]
+      });
+    });
   }
 
   handleInvalidId () {
@@ -85,7 +99,7 @@ class ProfileRouter extends React.Component {
   }
 
   getWall () {
-    return fetch(`${config.serverUrl}/walls/${this.userID}`)
+    return fetch(`${config.serverUrl}/users/${this.userID}/wall`)
     .then((res) => {
       return res.json();
     })
@@ -94,6 +108,25 @@ class ProfileRouter extends React.Component {
       this.setState({
         wall: wall
       });
+    });
+  }
+
+  handleFriendAdd () {
+    var userId = this.state.authorized._id;
+    var friendId = this.state.user._id;
+
+    fetch(`${config.serverUrl}/users/${userId}/friends/${friendId}`, {
+      method: 'put',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(() => {
+      console.log(`${userId} added ${friendId}.`);
+    })
+    .catch((err) => {
+      if (err) throw err;
     });
   }
 
@@ -121,7 +154,7 @@ class ProfileRouter extends React.Component {
     return (
       <React.Fragment>
         <MainContent>
-          <Thin user={user} friends={friends} />
+          <Thin user={user} friends={friends} onFriendAdd={this.handleFriendAdd} />
           <Wide user={user} wall={wall} />
         </MainContent>
       </React.Fragment>

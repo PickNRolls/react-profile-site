@@ -22,7 +22,7 @@ class Left extends React.Component {
 
     return (
       <ThinColumn order="0">
-        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} onFriendAdd={this.props.onFriendAdd}/>
         <FriendList friends={friends} />
       </ThinColumn>
     );

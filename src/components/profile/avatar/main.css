@@ -1,10 +1,18 @@
 .page-avatar {
   width: 230px;
-  height: 275px;
 }
 
 .page-avatar__pic {
   width: 200px;
   height: 200px;
   border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.page-avatar__msg {
+  margin-bottom: 10px;
+}
+
+.page-avatar__friends {
+  width: 100%;
 }

@@ -51,10 +51,6 @@ exports.createUser = function (userData, callback) {
   });
 };
  
-exports.getUser = function (id) {
-  return User.findById(id);
-};
- 
 // exports.checkUser = function (userData) {
 //   return User
 //     .findOne({email: userData.email})
@@ -72,3 +68,18 @@ function hash(text) {
   return crypto.createHash('sha1')
   .update(text).digest('base64');
 }
+
+/*
+  
+  User's actions
+
+*/
+
+exports.addFriend = function (userId, friendId) {
+  var user = User.findById(userId),
+    friend = User.findById(friendId);
+
+  console.log(user);
+  console.log('--------------');
+  console.log(friend);
+};

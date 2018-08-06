@@ -29,7 +29,7 @@ class FriendsRouter extends React.Component {
     .then(() => {
       var authorized = this.state.authorized;
 
-      return fetch(config.serverUrl + '/friends/' + authorized._id)
+      return fetch(`${config.serverUrl}/users/${authorized._id}/friends`)
       .then((res) => res.json())
     })
     .then((friends) => {

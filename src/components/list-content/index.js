@@ -4,13 +4,6 @@ import UITabs from '../ui-tabs';
 import './main.css';
 
 class ListContent extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
   render () {
     var tabsElements = this.props.tabsContent;
 

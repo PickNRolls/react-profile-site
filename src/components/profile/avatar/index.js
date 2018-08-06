@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import './main.css';
 
@@ -14,6 +15,13 @@ class Avatar extends React.Component {
           src={src}
           alt="page avatar"
         />
+
+        <Link to="" className="page-button page-avatar__msg">Написать сообщение</Link>
+        <button
+          className="page-button page-avatar__friends"
+          onClick={this.props.onFriendAdd}>
+          Добавить в друзья
+        </button>
       </div>
     );
   }
