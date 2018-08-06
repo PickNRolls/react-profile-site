@@ -76,10 +76,31 @@ function hash(text) {
 */
 
 exports.addFriend = function (userId, friendId) {
-  var user = User.findById(userId),
-    friend = User.findById(friendId);
+  User.findById(userId)
+  .then(function (user) {
+    var userHasFriend = false;
 
-  console.log(user);
-  console.log('--------------');
-  console.log(friend);
+    user.friends.forEach(function (iterableFriendId) {
+      if (iterableFriendId === friendId) userHasFriend = true;
+    });
+
+    if (userHasFriend) {
+      return null;
+    } else {
+      user.friends.push(friendId);
+      return user.save();
+    }
+  })
+  .then(function (user) {
+    if (user === null) return null;
+    return User.findById(friendId);
+  })
+  .then(function (friend) {
+    if (friend === null) return null;
+    friend.friends.push(userId);
+    return friend.save();
+  })
+  .catch(function (err) {
+    if (err) throw err;
+  });
 };

@@ -79,33 +79,7 @@ router.put('/:id/friends/:friendId',function (req, res) {
   var userId = req.params.id;
   var friendId = req.params.friendId;
 
-  User.findById(userId)
-  .then(function (user) {
-    var userHasFriend = false;
-
-    user.friends.forEach(function (iterableFriendId) {
-      if (iterableFriendId === friendId) userHasFriend = true;
-    });
-
-    if (userHasFriend) {
-      return null;
-    } else {
-      user.friends.push(friendId);
-      return user.save();
-    }
-  })
-  .then(function (user) {
-    if (user === null) return null;
-    return User.findById(friendId);
-  })
-  .then(function (friend) {
-    if (friend === null) return null;
-    friend.friends.push(userId);
-    return friend.save();
-  })
-  .catch(function (err) {
-    if (err) throw err;
-  });
+  api.addFriend(userId, friendId);
 });
 
 router.get('/:id/wall', function (req, res) {
