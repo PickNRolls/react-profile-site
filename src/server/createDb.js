@@ -1,27 +1,16 @@
-var User = require('./models/user');
-var Wall = require('./models/wall');
+var api = require('./api');
 var mongoose = require('./mongoose');
-var count = 0;
+
 
 // count = 1;
 // Log -> '000000001'
 
-var getId = function () {
-  var current = '' + count++;
-  var len = current.length;
-  var oString = '';
-
-  for (var i = 9; i > len; i--) {
-    oString += 0;
-  }
-
-  return oString + current;
-};
-
-
-var accounts = [
-  new User({
-    _id: getId(),
+var bootstrap = function () {
+  api.createUser({
+    authData: {
+      username: 'serega',
+      password: 'hizyabla'
+    },
     name: {
       first: 'Серега',
       last: 'Симонов'
@@ -32,9 +21,13 @@ var accounts = [
       currentInfo: 'Zyables?'
     },
     friends: ['000000001']
-  }),
-  new User({
-    _id: getId(),
+  });
+
+  api.createUser({
+    authData: {
+      username: 'tolek',
+      password: 'hizyabla'
+    },
     name: {
       first: 'Анатолий',
       last: 'Овчаренко'
@@ -45,9 +38,13 @@ var accounts = [
       currentInfo: 'Python is the best!'
     },
     friends: ['000000002']
-  }),
-  new User({
-    _id: getId(),
+  });
+
+  api.createUser({
+    authData: {
+      username: 'sanya',
+      password: 'hizyabla'
+    },
     name: {
       first: 'Александр',
       last: 'Проводников'
@@ -58,9 +55,13 @@ var accounts = [
       currentInfo: 'Basketball is my life'
     },
     friends: ['000000003']
-  }),
-  new User({
-    _id: getId(),
+  });
+
+  api.createUser({
+    authData: {
+      username: 'daniil',
+      password: 'hizyabla'
+    },
     name: {
       first: 'Даниил',
       last: 'Чагин'
@@ -71,9 +72,13 @@ var accounts = [
       currentInfo: 'Фриланс говно, а брать деньги у мамы - нет!'
     },
     friends: ['000000004']
-  }),
-  new User({
-    _id: getId(),
+  });
+
+  api.createUser({
+    authData: {
+      username: 'vitya',
+      password: 'hizyabla'
+    },
     name: {
       first: 'Витя',
       last: 'Манджиев'
@@ -84,22 +89,13 @@ var accounts = [
       currentInfo: 'Calmik'
     },
     friends: ['000000005']
-  }),
-  new User({
-    _id: getId(),
-    name: {
-      first: 'Марина',
-      last: 'Граф'
+  });
+
+  api.createUser({
+    authData: {
+      username: 'ilya',
+      password: 'hizyabla'
     },
-    birth: Date.now(),
-    page: {
-      avatar: 'https://pp.userapi.com/c840433/v840433540/43fc0/pATMD8bRIUw.jpg?ava=1',
-      currentInfo: 'Hi zyables, i\'m from ingland!'
-    },
-    friends: ['000000000', '000000006']
-  }),
-  new User({
-    _id: getId(),
     name: {
       first: 'Илья',
       last: 'Блинков'
@@ -110,39 +106,27 @@ var accounts = [
       currentInfo: 'Web-developer, not web-monkey...'
     },
     friends: ['000000000', '000000001', '000000002', '000000003', '000000004', '000000005']
-  })
-];
-
-var bootstrap = function () {
-  var arrOfPromises = accounts.map(function(account) {
-    console.log('Inserting account - ' + account.fullName + '.');
-
-    return account.save()
-    .then(function () {
-      var wall = new Wall({
-        _id: account._id
-      });
-
-      return wall.save();
-    })
   });
 
-  return Promise.all(arrOfPromises);
+  api.createUser({
+    authData: {
+      username: 'marina',
+      password: 'hizyabla'
+    },
+    name: {
+      first: 'Марина',
+      last: 'Граф'
+    },
+    birth: Date.now(),
+    page: {
+      avatar: 'https://pp.userapi.com/c840433/v840433540/43fc0/pATMD8bRIUw.jpg?ava=1',
+      currentInfo: 'Hi zyables, i\'m from ingland!'
+    },
+    friends: ['000000000', '000000006']
+  });
 };
 
-mongoose.connection.on('open', function () {
-  var db = mongoose.connection.db;
-  db.dropDatabase()
-  .then(function () {
-    console.log('Database is dropped.');
-    console.log('Inserting users to users-collection.');
-  })
-  .then(bootstrap)
-  .then(function () {
-    console.log('Users are inserted.');
-    mongoose.disconnect();
-  })
-  .catch(function (err) {
-    if (err) throw err;
-  });
-});
+bootstrap();
+setTimeout(function () {
+  mongoose.disconnect();
+}, 6000);

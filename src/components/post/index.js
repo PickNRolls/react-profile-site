@@ -58,20 +58,26 @@ class Post extends React.Component {
       );
     }
 
+    var avatar;
+    if (user.page) avatar = user.page.avatar;
+    else avatar = 'https://vk.com/images/camera_200.png?ava=1';
+
+    var fullName = user.name.first + ' ' + user.name.last;
+
     return (
       <div className="page-post page-block page-block--wrap">
         <header className="page-post-header clearfix">
           <Link to={`/id${user._id}`} className="page-post-header__author">
             <img
-              src={user.page.avatar}
-              alt={user.fullName}
+              src={avatar}
+              alt={fullName}
               className="page-post-header__avatar"
             />
           </Link>
 
           <div className="page-post-info">
             <Link to={`/id${user.id}`} className="page-post-info__author">
-              {user.fullName}
+              {fullName}
             </Link>
             <div className="page-post-info__date">
               {

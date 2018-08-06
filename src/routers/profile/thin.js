@@ -14,7 +14,10 @@ import './main.css';
 class Left extends React.Component {
   render () {
     var user = this.props.user;
-    var avatarSrc = user.page.avatar;
+    var avatarSrc;
+    if (user.page) {
+      avatarSrc = user.page.avatar;
+    }
     var friends = this.props.friends;
 
     return (

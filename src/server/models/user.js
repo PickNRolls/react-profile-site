@@ -2,15 +2,25 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  _id: String,
+  _id: {
+    type: String,
+    required: true
+  },
   name: {
-    first: String,
-    last: String
+    first: {
+      type: String,
+      required: true
+    },
+    last: {
+      type: String,
+      required: true
+    }
   },
   birth: Date,
   page: {
     avatar: String,
-    currentInfo: String
+    currentInfo: String,
+    default: {}
   },
   friends: Array
 });

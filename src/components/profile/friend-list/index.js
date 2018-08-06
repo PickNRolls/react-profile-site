@@ -26,6 +26,7 @@ class FriendList extends React.Component {
 
   render () {
     var friends = this.props.friends.slice(0);
+    if (!friends.length) return null;
     var friendsElements = this.getSixRandomFriends(friends);
 
     if (!friends) {

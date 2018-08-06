@@ -88,12 +88,16 @@ class NewPost extends React.Component {
     var user = this.state.authorized;
     if (!user) return null;
 
+    var avatar;
+    if (user.page) avatar = user.page.avatar;
+    else avatar = 'https://vk.com/images/camera_200.png?ava=1';
+
     return (
       <div className="page-new-post page-block page-block--wrap">
         <div className="page-new-post__field-wrap">
           <Link to={`/id${user._id}`} className="page-new-post__avatar-wrap">
             <img
-              src={user.page.avatar}
+              src={avatar}
               alt={user.name.first}
               className="page-new-post__avatar"
             />

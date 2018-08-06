@@ -3,19 +3,15 @@ import React from 'react';
 import './main.css';
 
 class Avatar extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
   render () {
+    var src = this.props.src;
+    if (!src) src = 'https://vk.com/images/camera_200.png?ava=1';
+
     return (
       <div className="page-avatar page-block">
         <img
           className="page-avatar__pic"
-          src={this.props.src}
+          src={src}
           alt="page avatar"
         />
       </div>

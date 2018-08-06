@@ -7,7 +7,9 @@ class Info extends React.Component {
     var user = this.props.user;
     var name = user.name;
     var birth = user.birth;
-    var status = user.page.currentInfo;
+    var status;
+    if (!user.page) status = '';
+    else status = user.page.currentInfo;
 
     return (
       <div className="page-info page-block page-block--wrap">
@@ -17,7 +19,7 @@ class Info extends React.Component {
               <span>Online</span>
             </div>
             <h1 className="page-info__profile-name">
-              {name.first} {name.second}
+              {name.first} {name.last}
             </h1>
             <div className="page-info__status">{status}</div>
           </div>
