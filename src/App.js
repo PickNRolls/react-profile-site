@@ -5,9 +5,11 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom';
+import cookie from 'react-cookies';
 
 // Main routers
 
+import LoginRouter from './routers/login';
 import ProfileRouter from './routers/profile';
 import FriendsRouter from './routers/friends';
 import MessagesRouter from './routers/messages';
@@ -37,13 +39,21 @@ class App extends React.Component {
     this.state = {
       authorized: null
     };
+
+    this.authorize = this.authorize.bind(this);
   }
 
-  componentDidMount () {
-    store.then((data) => {
-      this.setState({
-        authorized: data[0]
-      });
+  authorize (user) {
+    store
+    .then((data) => {
+      data.push(user);
+    })
+    .catch((err) => {
+      if (err) throw err;
+    })
+
+    this.setState({
+      authorized: user
     });
   }
 
@@ -62,18 +72,25 @@ class App extends React.Component {
     if (!this.state.authorized) {
       return (
         <AppEl>
-          <NoAuthorized />
+          <Redirect to="/login" />
+          <Route exact path="/login" render={(props) => (
+            <LoginRouter {...props} onLogin={this.authorize} />
+          )} />
         </AppEl>
       );
     }
-    
-    var pageId = '/id' + this.state.authorized._id;
+
+    var userPage = `/id${this.state.authorized._id}`;
 
     return (
       <AppEl>
         <Switch>
-          <Route exact path="/" render={() => (
-            <Redirect to={pageId} />
+          <Route exact path="/" render={(props) => (
+            <Redirect to={userPage} />
+          )} />
+
+          <Route exact path="/login" render={(props) => (
+            <Redirect to={userPage} />
           )} />
 
           <Route path="/id:id" render={(props) => (

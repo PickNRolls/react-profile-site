@@ -32,7 +32,8 @@ exports.createUser = function (userData, callback) {
     _id: id,
     name: userData.name,
     birth: userData.birth,
-    page: {}
+    page: {},
+    friends: userData.friends || []
   });
 
   var wall = new Wall({
@@ -51,18 +52,19 @@ exports.createUser = function (userData, callback) {
   });
 };
  
-// exports.checkUser = function (userData) {
-//   return User
-//     .findOne({email: userData.email})
-//     .then(function(doc){
-//       if ( doc.password == hash(userData.password) ) {
-//         console.log("User password is ok");
-//         return Promise.resolve(doc);
-//       } else {
-//         return Promise.reject("Error wrong");
-//       }
-//     });
-// };
+exports.checkUser = function (userData) {
+  return AuthData.findOne({username: userData.username})
+  .then(function(doc){
+    if ( doc.password == hash(userData.password) ) {
+      return User.findById(doc._id);
+    } else {
+      return Promise.reject("Error wrong");
+    }
+  })
+  .catch(function (err) {
+    if (err) console.log(err);
+  })
+};
  
 function hash(text) {
   return crypto.createHash('sha1')
@@ -76,6 +78,8 @@ function hash(text) {
 */
 
 exports.addFriend = function (userId, friendId) {
+  if (userId === friendId) return null;
+
   User.findById(userId)
   .then(function (user) {
     var userHasFriend = false;

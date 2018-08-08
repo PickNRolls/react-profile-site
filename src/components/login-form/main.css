@@ -1,0 +1,31 @@
+.page-login-form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.login-form {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+
+  flex-direction: column;
+}
+
+.login-form__input {
+  width: 270px;
+  height: 35px;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #c9d0d6;
+  border-radius: 3px;
+  padding: 6px 12px 6px;
+  margin-bottom: 15px;
+}
+
+.login-form__button {
+  width: 90px;
+  height: 35px;
+  font-size: 14px !important;
+}

@@ -27,8 +27,8 @@ class Wide extends React.Component {
     var listContent = {
       tabs: {
         items: [
-          <F>Все друзья 6</F>,
-          <F>Друзья онлайн 3</F>
+          <F>Все друзья {friends.length}</F>,
+          <F>Друзья онлайн {friends.length}</F>
         ],
         button: <F>Найти друзей</F>
       },

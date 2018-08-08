@@ -4,5 +4,14 @@ module.exports = {
     options: {
       useNewUrlParser: true
     }
+  },
+  session: {
+    secret: 'pip i django --unique',
+    key: 'sid',
+    cookie: {
+      path: '/',
+      httpOnly: true,
+      maxAge: null
+    }
   }
 };
