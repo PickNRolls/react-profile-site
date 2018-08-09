@@ -50,7 +50,7 @@ class App extends React.Component {
     })
     .catch((err) => {
       if (err) throw err;
-    })
+    });
 
     this.setState({
       authorized: user

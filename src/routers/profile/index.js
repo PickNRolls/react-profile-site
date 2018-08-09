@@ -38,6 +38,7 @@ class ProfileRouter extends React.Component {
     this.getUser = this.getUser.bind(this);
     this.getWall = this.getWall.bind(this);
     this.handleFriendAdd = this.handleFriendAdd.bind(this);
+    this.handleFriendDelete = this.handleFriendDelete.bind(this);
   }
 
   componentDidMount () {
@@ -130,6 +131,11 @@ class ProfileRouter extends React.Component {
     });
   }
 
+  handleFriendDelete () {
+    console.log(this.state.user.name.first);
+    console.log(this.state.authorized.name.first);
+  }
+
   render () {
     var user = this.state.user;
     var wall = this.state.wall;
@@ -154,8 +160,16 @@ class ProfileRouter extends React.Component {
     return (
       <React.Fragment>
         <MainContent>
-          <Thin user={user} friends={friends} onFriendAdd={this.handleFriendAdd} />
-          <Wide user={user} wall={wall} />
+          <Thin
+            user={user}
+            friends={friends}
+            onFriendAdd={this.handleFriendAdd}
+            onFriendDelete={this.handleFriendDelete}
+          />
+          <Wide
+            user={user}
+            wall={wall}
+          />
         </MainContent>
       </React.Fragment>
     );

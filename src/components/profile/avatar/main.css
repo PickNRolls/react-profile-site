@@ -6,13 +6,17 @@
   width: 200px;
   height: 200px;
   border-radius: 2px;
-  margin-bottom: 10px;
 }
 
 .page-avatar__msg {
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .page-avatar__friends {
   width: 100%;
+}
+
+.page-avatar__friends--delete {
+  background: #e5ebf1 !important;
+  color: #55677d !important;
 }
