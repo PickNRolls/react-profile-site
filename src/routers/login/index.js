@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 // Layout components
 
@@ -46,6 +47,9 @@ class LoginRouter extends React.Component {
   }
 
   render () {
+    if (this.props.location.pathname !== '/login')
+      return <Redirect to="/login" />;
+
     return (
       <Empty>
         <LoginForm onLogin={this.login} />

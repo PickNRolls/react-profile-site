@@ -72,8 +72,7 @@ class App extends React.Component {
     if (!this.state.authorized) {
       return (
         <AppEl>
-          <Redirect to="/login" />
-          <Route exact path="/login" render={(props) => (
+          <Route render={(props) => (
             <LoginRouter {...props} onLogin={this.authorize} />
           )} />
         </AppEl>
