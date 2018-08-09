@@ -75,7 +75,7 @@ router.get('/:id/friends/:friendId', function (req, res) {
   })
 })
 
-router.put('/:id/friends/:friendId',function (req, res) {
+router.put('/:id/friends/:friendId', function (req, res) {
   var userId = req.params.id;
   var friendId = req.params.friendId;
 
@@ -92,6 +92,13 @@ router.get('/:id/wall', function (req, res) {
   .catch(function (err) {
     if (err) throw err;
   });
+});
+
+router.delete('/:id/friends/:friendId', function (req, res) {
+  var userId = req.params.id;
+  var friendId = req.params.friendId;
+
+  api.deleteFriend(userId, friendId);
 })
 
 router.put('/:id/wall', function (req, res) {

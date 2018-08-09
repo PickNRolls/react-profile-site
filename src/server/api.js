@@ -108,3 +108,30 @@ exports.addFriend = function (userId, friendId) {
     if (err) throw err;
   });
 };
+
+exports.deleteFriend = function (userId, friendId) {
+  if (userId === friendId) return null;
+
+  User.findById(userId)
+  .then(function (user) {
+    user.friends.forEach(function (id, index) {
+      if (id === friendId) return user.friends.splice(index, 1);
+    });
+
+    return user.save();
+  })
+  .then(function (user) {
+    if (user === null) return null;
+    return User.findById(friendId);
+  })
+  .then(function (friend) {
+    if (friend === null) return null;
+    friend.friends.forEach(function (id, index) {
+      if (id === userId) return friend.friends.splice(index, 1);
+    });
+    return friend.save();
+  })
+  .catch(function (err) {
+    if (err) throw err;
+  });
+};

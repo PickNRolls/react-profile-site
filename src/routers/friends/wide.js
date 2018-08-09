@@ -24,6 +24,8 @@ class Wide extends React.Component {
   render () {
     var friends = this.props.friends;
 
+    if (!friends) return null;
+
     var listContent = {
       tabs: {
         items: [

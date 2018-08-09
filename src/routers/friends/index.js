@@ -43,12 +43,14 @@ class FriendsRouter extends React.Component {
   }
 
   render () {
-    if (!this.state.friends) return null;
+    var friends;
+    if (!this.state.friends) friends = null;
+    friends = this.state.friends;
 
     return (
       <React.Fragment>
         <MainContent>
-          <Wide friends={this.state.friends} />
+          <Wide friends={friends} />
           <Thin />
         </MainContent>
       </React.Fragment>

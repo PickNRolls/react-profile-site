@@ -132,8 +132,19 @@ class ProfileRouter extends React.Component {
   }
 
   handleFriendDelete () {
-    console.log(this.state.user.name.first);
-    console.log(this.state.authorized.name.first);
+    var userId = this.state.authorized._id;
+    var friendId = this.state.user._id;
+
+    fetch(`${config.serverUrl}/users/${userId}/friends/${friendId}`, {
+      method: 'delete',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .catch((err) => {
+      if (err) throw err;
+    });
   }
 
   render () {
