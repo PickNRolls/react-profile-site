@@ -10,11 +10,11 @@ import Info from '../../components/profile/info';
 import NewPost from '../../components/new-post';
 import Wall from '../../components/wall';
 
-// Store
+// Stores
 
-import store from '../../store';
+import authStore from '../../stores/auth';
+
 import config from '../../config';
-
 import './main.css';
 
 
@@ -56,11 +56,10 @@ class Wide extends React.Component {
   }
 
   componentDidMount () {
-    store.then((data) => {
-      this.setState({
-        authorized: data[0]
-      });
-    });
+    var user = authStore.getState().auth.user;
+    this.setState({
+      authorized: user
+    })
   }
 
   render () {

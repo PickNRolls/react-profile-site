@@ -16,9 +16,11 @@ import config from '../../config';
 
 // Store
 
-import store from '../../store';
+import authStore from '../../stores/auth';
 
 // Style
+
+import apiUser from '../../api/user';
 
 import './main.css';
 
@@ -37,16 +39,16 @@ class ProfileRouter extends React.Component {
 
     this.getUser = this.getUser.bind(this);
     this.getWall = this.getWall.bind(this);
+    this.getFriends = this.getFriends.bind(this);
     this.handleFriendAdd = this.handleFriendAdd.bind(this);
     this.handleFriendDelete = this.handleFriendDelete.bind(this);
   }
 
   componentDidMount () {
-    store.then((data) => {
-      this.setState({
-        authorized: data[0]
-      });
-    });
+    var user = authStore.getState().auth.user;
+    this.setState({
+      authorized: user
+    })
   }
 
   handleInvalidId () {
@@ -59,6 +61,7 @@ class ProfileRouter extends React.Component {
     if (this.props.match.params.id !== this.userID) {
       this.getUser()
       .then(this.getWall)
+      .then(this.getFriends)
       .catch((err) => {
         if (err) throw err;
       });
@@ -68,20 +71,22 @@ class ProfileRouter extends React.Component {
   getUser () {
     var userID = this.props.match.params.id;
 
-    return fetch(`${config.serverUrl}/users/${userID}`)
-    .then((res) => {
-      return res.json();
-    })
+    return apiUser.getUser(userID)
     .then((user) => {
       this.user = user;
       this.userID = user._id;
+      return user;
+    });
+  }
 
-      var friendsPromises = user.friends.map((friendID) => {
-        return fetch(`${config.serverUrl}/users/${friendID}`);
-      });
+  getFriends () {
+    var user = this.user;
 
-      return Promise.all(friendsPromises);
-    })
+    var friendsPromises = user.friends.map((friendID) => {
+      return fetch(`${config.serverUrl}/users/${friendID}`);
+    });
+
+    return Promise.all(friendsPromises)
     .then((responses) => {
       var arr = responses.map((res) => {
         return res.json();
@@ -100,10 +105,7 @@ class ProfileRouter extends React.Component {
   }
 
   getWall () {
-    return fetch(`${config.serverUrl}/users/${this.userID}/wall`)
-    .then((res) => {
-      return res.json();
-    })
+    apiUser.getWall(this.userID)
     .then((wall) => {
       this.wall = wall;
       this.setState({

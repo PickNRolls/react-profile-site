@@ -9,6 +9,14 @@ import Wide from './wide';
 import store from '../../store';
 import config from '../../config';
 
+// Api
+
+import apiUser from '../../api/user';
+
+// Stores
+
+import authStore from '../../stores/auth';
+
 import './main.css';
 
 class FriendsRouter extends React.Component {
@@ -21,25 +29,14 @@ class FriendsRouter extends React.Component {
   }
 
   componentDidMount () {
-    store.then((data) => {
-      return this.setState({
-        authorized: data[0]
-      });
-    })
-    .then(() => {
-      var authorized = this.state.authorized;
-
-      return fetch(`${config.serverUrl}/users/${authorized._id}/friends`)
-      .then((res) => res.json())
-    })
-    .then((friends) => {
+    var user = authStore.getState().auth.user;
+    apiUser.getFriends(user._id)
+    .then(friends => {
       this.setState({
+        authorized: user,
         friends: friends
       });
-    })
-    .catch((err) => {
-      if (err) throw err;
-    })
+    })    
   }
 
   render () {

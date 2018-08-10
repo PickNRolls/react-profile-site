@@ -1,5 +1,12 @@
-import config from './config';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import reducer from './reducers';
 
-var allPromises = [];
+const store = createStore(
+  reducer,
+  applyMiddleware(
+    thunkMiddleware
+  )
+);
 
-export default Promise.all(allPromises);
+export default store;

@@ -3,7 +3,7 @@ import {
   Link
 } from 'react-router-dom';
 
-import store from '../../store';
+import authStore from '../../stores/auth';
 
 import './main.css';
 
@@ -77,10 +77,9 @@ class NewPost extends React.Component {
 
   componentDidMount() {
     this.showPlaceholder();
-    store.then((data) => {
-      this.setState({
-        authorized: data[0]
-      });
+    var user = authStore.getState().auth.user;
+    this.setState({
+      authorized: user
     });
   }
 

@@ -15,6 +15,11 @@ import LoginForm from '../../components/login-form';
 
 import config from '../../config';
 
+// Redux tools
+
+import authStore from '../../stores/auth';
+import {login} from '../../actions/auth';
+
 import './main.css';
 
 class LoginRouter extends React.Component {
@@ -28,22 +33,7 @@ class LoginRouter extends React.Component {
   }
 
   login (data) {
-    fetch(`${config.serverUrl}/login`, {
-      method: 'post',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then((res) => res.json())
-    .then((user) => {
-      if (!user) return;
-      this.props.onLogin(user);
-    })
-    .catch((err) => {
-      if (err) throw err;
-    })
+    authStore.dispatch(login(data));
   }
 
   render () {

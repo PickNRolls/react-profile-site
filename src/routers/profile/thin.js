@@ -11,7 +11,7 @@ import FriendList from '../../components/profile/friend-list';
 
 // Data store
 
-import store from '../../store';
+import authStore from '../../stores/auth';
 
 import './main.css';
 
@@ -24,12 +24,10 @@ class Left extends React.Component {
   }
 
   componentDidMount () {
-    store
-    .then((data) => {
-      this.setState({
-        authorized: data[0]
-      });
-    });
+    var user = authStore.getState().auth.user;
+    this.setState({
+      authorized: user
+    })
   }
 
   checkRelationsBetween (user1, user2) {

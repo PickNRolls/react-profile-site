@@ -1,6 +1,6 @@
 import config from '../config';
 
-export function login (data) {
+function login (data) {
   if (data.username === undefined || data.password === undefined) {
     throw new Error('Api - auth: no data for login');
   }
@@ -17,4 +17,8 @@ export function login (data) {
   .catch((err) => {
     if (err) throw err;
   });
+};
+
+export default {
+  login
 };

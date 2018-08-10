@@ -23,9 +23,9 @@ import SiteHeader from './layout/site-header';
 import NoAuthorized from './error-handlers/no-authorized';
 import Error404 from './error-handlers/404';
 
-// Data store
+// Stores
 
-import store from './store';
+import authStore from './stores/auth';
 
 // Style
 
@@ -39,22 +39,20 @@ class App extends React.Component {
     this.state = {
       authorized: null
     };
-
-    this.authorize = this.authorize.bind(this);
   }
 
-  authorize (user) {
-    store
-    .then((data) => {
-      data.push(user);
+  componentDidMount () {
+    this.authSub = authStore.subscribe(() => {
+      var user = authStore.getState().auth.user;
+      if (!user.name) return;
+      this.setState({
+        authorized: user
+      });
     })
-    .catch((err) => {
-      if (err) throw err;
-    });
+  }
 
-    this.setState({
-      authorized: user
-    });
+  componentWillUnmount() {
+    this.authSub();
   }
 
   render () {
@@ -73,7 +71,7 @@ class App extends React.Component {
       return (
         <AppEl>
           <Route render={(props) => (
-            <LoginRouter {...props} onLogin={this.authorize} />
+            <LoginRouter {...props} />
           )} />
         </AppEl>
       );
